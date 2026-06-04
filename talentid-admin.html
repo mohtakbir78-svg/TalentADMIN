@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentID Admin Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Exo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080f;--bg2:#0d0f1e;--bg3:#131629;--bg4:#1a1e35;
+  --acc:#00cfff;--acc2:#7c3aed;--red:#ff3c3c;--green:#00e87a;
+  --gold:#ffd43b;--text:#f0f2ff;--muted:#6b7399;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-height:100vh}
+
+#login-screen{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{background:var(--bg2);border:1px solid var(--border2);border-radius:22px;padding:40px 32px;width:100%;max-width:380px}
+.login-logo{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;text-align:center;margin-bottom:4px}
+.login-logo .r{color:#ff3c3c}.login-logo .b{color:#00cfff}
+.login-sub{text-align:center;font-size:12px;color:var(--muted);margin-bottom:28px;letter-spacing:2px;text-transform:uppercase}
+.lf{margin-bottom:16px}
+.lf label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
+.lf input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.lf input:focus{border-color:var(--acc)}
+.lerr{background:rgba(255,60,60,.12);border:1px solid rgba(255,60,60,.3);color:#ff9090;font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
+.lerr.show{display:block}
+.lbtn{width:100%;padding:13px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--acc),#0099cc);color:#fff;font-family:'Exo 2',sans-serif;font-weight:800;font-size:14px;letter-spacing:1px;cursor:pointer}
+.lbtn:hover{opacity:.88}
+.lhint{text-align:center;font-size:11px;color:var(--muted);margin-top:14px}
+
+.admin-wrap{display:flex;min-height:100vh}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100}
+.sb-logo{padding:20px 18px 16px;border-bottom:1px solid var(--border)}
+.sb-logo-txt{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px}
+.sb-logo-txt .r{color:#ff3c3c}.sb-logo-txt .b{color:#00cfff}
+.sb-sub{font-size:9px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
+.sb-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.sbi{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;cursor:pointer;color:var(--muted);font-size:13px;font-weight:700;border:none;background:transparent;width:100%;text-align:left;transition:all .2s;position:relative}
+.sbi:hover{background:var(--bg3);color:var(--text)}
+.sbi.active{background:rgba(0,207,255,.1);color:var(--acc);border:1px solid rgba(0,207,255,.2)}
+.sbi .si{font-size:16px;flex-shrink:0}
+.notif-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--red);border-radius:50%;display:none;animation:pulse-dot .8s infinite}
+.notif-dot.show{display:block}
+@keyframes pulse-dot{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+.sb-foot{padding:16px 12px;border-top:1px solid var(--border)}
+.logout-btn{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;cursor:pointer;background:rgba(255,60,60,.08);border:1px solid rgba(255,60,60,.2);color:var(--red);font-family:'Exo 2',sans-serif;font-size:12px;font-weight:700;width:100%;transition:all .2s}
+.logout-btn:hover{background:rgba(255,60,60,.18)}
+
+.main{margin-left:220px;flex:1;padding:28px 24px;min-height:100vh}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px}
+.pt{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;letter-spacing:3px}
+.pt .hi{color:var(--acc)}
+
+.apage{display:none}.apage.active{display:block}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 18px;position:relative;overflow:hidden;transition:transform .2s}
+.sc:hover{transform:translateY(-3px)}
+.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.sc.bl::after{background:var(--acc)}.sc.gr::after{background:var(--green)}.sc.go::after{background:var(--gold)}.sc.re::after{background:var(--red)}
+.sl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.sv{font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px}
+.sv.bl{color:var(--acc)}.sv.gr{color:var(--green)}.sv.go{color:var(--gold)}.sv.re{color:var(--red)}
+.ss{font-size:11px;color:var(--muted)}
+
+.toggle-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;margin-bottom:24px}
+.toggle-card h3{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+.toggle-card p{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+.trow{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.big-toggle{position:relative;width:80px;height:42px;cursor:pointer}
+.big-toggle input{opacity:0;width:0;height:0;position:absolute}
+.ttrack{position:absolute;inset:0;border-radius:21px;background:var(--bg4);border:2px solid var(--border2);transition:all .3s;display:flex;align-items:center;padding:4px}
+.tthumb{width:30px;height:30px;border-radius:50%;background:var(--muted);transition:all .3s;flex-shrink:0}
+.big-toggle input:checked ~ .ttrack{background:rgba(0,232,122,.15);border-color:var(--green)}
+.big-toggle input:checked ~ .ttrack .tthumb{transform:translateX(38px);background:var(--green)}
+.tstatus{font-size:16px;font-weight:800;letter-spacing:2px}
+.tstatus.on{color:var(--green)}.tstatus.off{color:var(--red)}
+
+.tw{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px}
+.th{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.th h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px}
+.si-inp{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;width:200px;transition:border-color .2s}
+.si-inp:focus{border-color:var(--acc)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{padding:10px 16px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);background:var(--bg3)}
+.tbl td{padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
+.badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;font-weight:700}
+.badge.ff{background:rgba(255,60,60,.15);color:#ff6060}
+.badge.rbx{background:rgba(0,207,255,.12);color:#00cfff}
+.badge.dana{background:rgba(0,120,255,.12);color:#4499ff}
+.badge.qris{background:rgba(124,58,237,.12);color:#a78bfa}
+.erow{text-align:center;padding:40px;color:var(--muted);font-size:13px}
+.del-btn{background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.25);color:var(--red);padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'Exo 2',sans-serif;font-weight:700;transition:all .2s}
+.del-btn:hover{background:rgba(255,60,60,.2)}
+.clr-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:7px 14px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:12px;cursor:pointer;transition:all .2s}
+.clr-btn:hover{border-color:var(--red);color:var(--red)}
+
+.chat-wrap{display:grid;grid-template-columns:260px 1fr;gap:14px;height:500px}
+.cl{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow-y:auto;display:flex;flex-direction:column}
+.cl::-webkit-scrollbar{width:4px}.cl::-webkit-scrollbar-thumb{background:var(--border2)}
+.cl-hd{padding:14px 16px;border-bottom:1px solid var(--border);font-size:12px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;flex-shrink:0}
+.cl-item{padding:12px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s;display:flex;align-items:center;gap:10px}
+.cl-item:hover{background:var(--bg3)}
+.cl-item.active{background:rgba(0,207,255,.08);border-left:3px solid var(--acc)}
+.cl-ava{width:36px;height:36px;background:var(--bg4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cl-name{font-weight:700;font-size:13px;margin-bottom:2px}
+.cl-prev{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.unread-badge{background:var(--red);color:#fff;font-size:9px;font-weight:800;padding:2px 6px;border-radius:10px;margin-left:auto;flex-shrink:0}
+.cm{background:var(--bg2);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column}
+.cm-hd{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.cm-ava{width:36px;height:36px;background:var(--bg4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.cm-nm{font-weight:800;font-size:14px}
+.cm-st{font-size:11px;color:var(--green)}
+.cm-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.cm-msgs::-webkit-scrollbar{width:4px}.cm-msgs::-webkit-scrollbar-thumb{background:var(--border2)}
+.amsg{max-width:78%;padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.5}
+.amsg.user{background:var(--bg3);align-self:flex-start;border-radius:4px 10px 10px 10px}
+.amsg.admin{background:linear-gradient(135deg,var(--acc2),#4f46e5);align-self:flex-end;border-radius:10px 4px 10px 10px}
+.msg-time{font-size:9px;opacity:.5;margin-top:3px}
+.cm-inp-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);flex-shrink:0}
+.cm-inp{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none}
+.cm-send{background:linear-gradient(135deg,var(--acc),#0099cc);border:none;border-radius:8px;padding:9px 16px;color:#fff;font-family:'Exo 2',sans-serif;font-weight:700;font-size:12px;cursor:pointer}
+.no-sel{flex:1;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:20px;flex-direction:column;gap:10px}
+
+.cfg-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 20px;margin-bottom:20px}
+.cfg-card h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+.cfg-card p{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+.cfg-g{margin-bottom:14px}
+.cfg-g label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
+.cfg-g input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:11px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.cfg-g input:focus{border-color:var(--acc)}
+.cfg-g input::placeholder{color:var(--muted)}
+.save-btn{background:linear-gradient(135deg,var(--acc),#0099cc);border:none;border-radius:9px;padding:11px 24px;color:#fff;font-family:'Exo 2',sans-serif;font-weight:800;font-size:13px;letter-spacing:1px;cursor:pointer;transition:all .2s;margin-right:8px}
+.save-btn:hover{opacity:.88}
+.save-btn.gr{background:linear-gradient(135deg,var(--green),#00b35a)}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg2);border:1px solid var(--green);color:var(--green);padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;z-index:9999;display:none;animation:modin .3s ease;max-width:280px}
+.toast.err{border-color:var(--red);color:var(--red)}
+.toast.show{display:block}
+@keyframes modin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:700px){
+  .sidebar{transform:translateX(-220px);transition:transform .3s}
+  .main{margin-left:0}
+  .chat-wrap{grid-template-columns:1fr;height:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">TALENT<span class="r">ID</span> <span class="b">ADMIN</span></div>
+    <div class="login-sub">Panel Admin TalentID Store</div>
+    <div class="lerr" id="lerr"></div>
+    <div class="lf"><label>Username Admin</label><input type="text" id="adm-u" placeholder="ADMIN" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="lf"><label>Password</label><input type="password" id="adm-p" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <button class="lbtn" onclick="doAdminLogin()">Masuk ke Panel</button>
+    <div class="lhint">Default: ADMIN / ADMIN2026</div>
+  </div>
+</div>
+
+<!-- ADMIN LAYOUT -->
+<div class="admin-wrap" id="admin-wrap" style="display:none">
+
+  <div class="sidebar" id="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-txt">TALENT<span class="r">ID</span> <span class="b">ADMIN</span></div>
+      <div class="sb-sub">Panel Admin</div>
+    </div>
+    <nav class="sb-nav">
+      <button class="sbi active" onclick="goPage('dashboard',this)"><span class="si">📊</span>Dashboard</button>
+      <button class="sbi" onclick="goPage('store',this)"><span class="si">🏪</span>Toko On/Off</button>
+      <button class="sbi" onclick="goPage('transactions',this)"><span class="si">🛒</span>Transaksi</button>
+      <button class="sbi" onclick="goPage('users',this)"><span class="si">👥</span>Pengguna</button>
+      <button class="sbi" id="chat-nav-btn" onclick="goPage('chat',this)"><span class="si">💬</span>Chat<div class="notif-dot" id="chat-notif-dot"></div></button>
+      <button class="sbi" onclick="goPage('settings',this)"><span class="si">⚙️</span>Pengaturan</button>
+    </nav>
+    <div class="sb-foot">
+      <button class="logout-btn" onclick="doLogout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- DASHBOARD -->
+    <div class="apage active" id="pg-dashboard">
+      <div class="ph">
+        <div class="pt">DASH<span class="hi">BOARD</span></div>
+        <div style="font-size:12px;color:var(--muted)" id="dash-time"></div>
+      </div>
+      <div class="stat-grid">
+        <div class="sc bl"><div class="sl">Total Transaksi</div><div class="sv bl" id="s-total">0</div><div class="ss">Semua order</div></div>
+        <div class="sc gr"><div class="sl">Pengguna</div><div class="sv gr" id="s-users">0</div><div class="ss">Akun terdaftar</div></div>
+        <div class="sc go"><div class="sl">Free Fire</div><div class="sv go" id="s-ff">0</div><div class="ss">Order FF</div></div>
+        <div class="sc re"><div class="sl">Roblox</div><div class="sv re" id="s-rbx">0</div><div class="ss">Order Roblox</div></div>
+      </div>
+      <div class="tw">
+        <div class="th"><h3>TRANSAKSI TERBARU</h3></div>
+        <table class="tbl">
+          <thead><tr><th>Pembeli</th><th>Produk</th><th>Harga</th><th>Bayar</th><th>Tanggal</th></tr></thead>
+          <tbody id="recent-tb"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- STORE -->
+    <div class="apage" id="pg-store">
+      <div class="ph"><div class="pt">STATUS <span class="hi">TOKO</span></div></div>
+      <div class="toggle-card">
+        <h3>🏪 Buka / Tutup Toko</h3>
+        <p>Aktifkan atau nonaktifkan website TalentID Store. Saat dimatikan, pengunjung melihat halaman tutup.</p>
+        <div class="trow">
+          <label class="big-toggle">
+            <input type="checkbox" id="store-tog" onchange="toggleStore()">
+            <div class="ttrack"><div class="tthumb"></div></div>
+          </label>
+          <div class="tstatus" id="tog-label">...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSACTIONS -->
+    <div class="apage" id="pg-transactions">
+      <div class="ph">
+        <div class="pt">TRANS<span class="hi">AKSI</span></div>
+        <button class="clr-btn" onclick="clearTx()">🗑 Hapus Semua</button>
+      </div>
+      <div class="tw">
+        <div class="th">
+          <h3>SEMUA ORDER</h3>
+          <input class="si-inp" type="text" id="tx-q" placeholder="🔍 Cari..." oninput="renderTx()">
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Pembeli</th><th>Game</th><th>Nominal</th><th>ID Game</th><th>Harga</th><th>Bayar</th><th>Tanggal</th><th></th></tr></thead>
+          <tbody id="tx-tb"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- USERS -->
+    <div class="apage" id="pg-users">
+      <div class="ph">
+        <div class="pt">PENG<span class="hi">GUNA</span></div>
+        <button class="clr-btn" onclick="clearUsers()">🗑 Hapus Semua</button>
+      </div>
+      <div class="tw">
+        <div class="th"><h3>DAFTAR AKUN</h3><span style="font-size:11px;color:var(--muted);background:var(--bg4);padding:4px 10px;border-radius:6px" id="u-count">0 akun</span></div>
+        <table class="tbl">
+          <thead><tr><th>Nama</th><th>Tgl Daftar</th><th>Total Order</th><th></th></tr></thead>
+          <tbody id="users-tb"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="apage" id="pg-chat">
+      <div class="ph"><div class="pt">PESAN <span class="hi">MASUK</span></div></div>
+      <div class="chat-wrap">
+        <div class="cl">
+          <div class="cl-hd">Percakapan</div>
+          <div id="cl-items" style="flex:1;overflow-y:auto"></div>
+        </div>
+        <div class="cm" id="cm-area">
+          <div class="no-sel">
+            <span style="font-size:32px">💬</span>
+            <span>Pilih percakapan untuk membalas</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px">Auto-refresh setiap 2 detik. Balasan langsung muncul di chat widget website pembeli.</p>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="apage" id="pg-settings">
+      <div class="ph"><div class="pt">PENG<span class="hi">ATURAN</span></div></div>
+      <div class="cfg-card">
+        <h3>🤖 Token Bot Telegram</h3>
+        <p>Masukkan token bot Telegram baru. Digunakan untuk notifikasi order dan chat.<br><strong style="color:var(--gold)">⚠️ Jangan share token ke siapapun!</strong></p>
+        <div class="cfg-g"><label>Bot Token</label><input type="text" id="tg-tok" placeholder="123456789:AAHxxx..."></div>
+        <div class="cfg-g"><label>Chat ID Admin</label><input type="text" id="tg-cid" placeholder="Contoh: 8248546813"></div>
+        <button class="save-btn" onclick="saveTG()">💾 Simpan</button>
+        <button class="save-btn gr" onclick="testTG()">📨 Test Kirim</button>
+      </div>
+      <div class="cfg-card">
+        <h3>🔐 Ubah Password Admin</h3>
+        <div class="cfg-g"><label>Password Baru</label><input type="password" id="np1" placeholder="Min. 6 karakter"></div>
+        <div class="cfg-g"><label>Konfirmasi</label><input type="password" id="np2" placeholder="Ulangi password"></div>
+        <button class="save-btn" onclick="changePass()">Ubah Password</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =========== ADMIN AUTH ===========
+var ADMIN_CREDS = {user:'ADMIN', pass:'ADMIN2026'};
+
+function doAdminLogin() {
+  var u = document.getElementById('adm-u').value.trim();
+  var p = document.getElementById('adm-p').value;
+  var err = document.getElementById('lerr');
+  err.classList.remove('show');
+  var saved = JSON.parse(localStorage.getItem('talentid_admin_creds') || 'null') || ADMIN_CREDS;
+  if (u === saved.user && p === saved.pass) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-wrap').style.display = 'flex';
+    initPanel();
+  } else {
+    err.textContent = 'Username atau password salah!';
+    err.classList.add('show');
+  }
+}
+
+function doLogout() {
+  if (!confirm('Logout dari panel admin?')) return;
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-wrap').style.display = 'none';
+}
+
+function changePass() {
+  var p1 = document.getElementById('np1').value;
+  var p2 = document.getElementById('np2').value;
+  if (p1.length < 6) { showToast('Password minimal 6 karakter!', true); return; }
+  if (p1 !== p2) { showToast('Password tidak cocok!', true); return; }
+  var saved = JSON.parse(localStorage.getItem('talentid_admin_creds') || 'null') || ADMIN_CREDS;
+  saved.pass = p1;
+  localStorage.setItem('talentid_admin_creds', JSON.stringify(saved));
+  showToast('Password berhasil diubah!');
+  document.getElementById('np1').value = '';
+  document.getElementById('np2').value = '';
+}
+
+// =========== PAGE NAV ===========
+function goPage(name, btn) {
+  document.querySelectorAll('.apage').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.sbi').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('pg-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'dashboard') refreshDash();
+  if (name === 'transactions') renderTx();
+  if (name === 'users') renderUsers();
+  if (name === 'chat') { renderChatList(); clearChatNotif(); }
+  if (name === 'store') initStoreToggle();
+  if (name === 'settings') loadTGConfig();
+}
+
+// =========== STORE TOGGLE ===========
+function initStoreToggle() {
+  var s = localStorage.getItem('talentid_status') || 'on';
+  document.getElementById('store-tog').checked = (s === 'on');
+  updateTogLabel(s);
+}
+function toggleStore() {
+  var on = document.getElementById('store-tog').checked;
+  var s = on ? 'on' : 'off';
+  localStorage.setItem('talentid_status', s);
+  updateTogLabel(s);
+  showToast(on ? '✅ Toko sekarang BUKA' : '🔒 Toko sekarang TUTUP');
+}
+function updateTogLabel(s) {
+  var el = document.getElementById('tog-label');
+  if (s === 'on') { el.textContent = '🟢 BUKA'; el.className = 'tstatus on'; }
+  else { el.textContent = '🔴 TUTUP'; el.className = 'tstatus off'; }
+}
+
+// =========== TRANSACTIONS ===========
+function getTx() { return JSON.parse(localStorage.getItem('talentid_transactions') || '[]'); }
+function renderTx() {
+  var q = (document.getElementById('tx-q').value || '').toLowerCase();
+  var list = getTx().filter(function(t){
+    return !q || (t.user||'').toLowerCase().includes(q) || (t.game||'').toLowerCase().includes(q) || (t.nominal||'').toLowerCase().includes(q);
+  });
+  var tb = document.getElementById('tx-tb');
+  if (!list.length) { tb.innerHTML = '<tr><td colspan="8" class="erow">Belum ada transaksi</td></tr>'; return; }
+  tb.innerHTML = list.map(function(t, i) {
+    var gc = (t.game||'').toLowerCase().includes('fire') ? 'ff' : 'rbx';
+    var pc = (t.pay||'').toLowerCase() === 'dana' ? 'dana' : 'qris';
+    var d = t.date ? formatDate(new Date(t.date)) : '-';
+    return '<tr>' +
+      '<td><strong>' + (t.user||'-') + '</strong></td>' +
+      '<td><span class="badge ' + gc + '">' + (t.game||'-') + '</span></td>' +
+      '<td>' + (t.nominal||'-') + '</td>' +
+      '<td style="color:var(--muted);font-size:12px">' + (t.id||'-') + '</td>' +
+      '<td><strong style="color:var(--gold)">' + (t.harga||'-') + '</strong></td>' +
+      '<td><span class="badge ' + pc + '">' + (t.pay||'-') + '</span></td>' +
+      '<td style="font-size:11px;color:var(--muted)">' + d + '</td>' +
+      '<td><button class="del-btn" onclick="delTx(' + i + ')">✕</button></td>' +
+      '</tr>';
+  }).join('');
+}
+function delTx(i) {
+  if (!confirm('Hapus transaksi ini?')) return;
+  var list = getTx(); list.splice(i,1);
+  localStorage.setItem('talentid_transactions', JSON.stringify(list));
+  renderTx(); showToast('Transaksi dihapus');
+}
+function clearTx() {
+  if (!confirm('Hapus SEMUA transaksi?')) return;
+  localStorage.removeItem('talentid_transactions');
+  renderTx(); showToast('Semua transaksi dihapus');
+}
+
+// =========== USERS ===========
+function getUsers() { return JSON.parse(localStorage.getItem('talentid_users') || '[]'); }
+function renderUsers() {
+  var users = getUsers();
+  var txs = getTx();
+  document.getElementById('u-count').textContent = users.length + ' akun';
+  var tb = document.getElementById('users-tb');
+  if (!users.length) { tb.innerHTML = '<tr><td colspan="4" class="erow">Belum ada pengguna</td></tr>'; return; }
+  tb.innerHTML = users.map(function(u, i) {
+    var cnt = txs.filter(function(t){ return t.user === u.name; }).length;
+    var d = u.createdAt ? formatDate(new Date(u.createdAt)) : '-';
+    return '<tr>' +
+      '<td><strong>' + u.name + '</strong></td>' +
+      '<td style="font-size:11px;color:var(--muted)">' + d + '</td>' +
+      '<td><span style="color:var(--gold);font-weight:700">' + cnt + '</span> order</td>' +
+      '<td><button class="del-btn" onclick="delUser(' + i + ')">✕</button></td>' +
+      '</tr>';
+  }).join('');
+}
+function delUser(i) {
+  if (!confirm('Hapus akun ini?')) return;
+  var users = getUsers(); users.splice(i,1);
+  localStorage.setItem('talentid_users', JSON.stringify(users));
+  renderUsers(); showToast('Akun dihapus');
+}
+function clearUsers() {
+  if (!confirm('Hapus SEMUA akun pengguna?')) return;
+  localStorage.removeItem('talentid_users');
+  localStorage.removeItem('talentid_loggedin');
+  renderUsers(); showToast('Semua akun dihapus');
+}
+
+// =========== DASHBOARD ===========
+function refreshDash() {
+  var txs = getTx();
+  var users = getUsers();
+  document.getElementById('s-total').textContent = txs.length;
+  document.getElementById('s-users').textContent = users.length;
+  document.getElementById('s-ff').textContent = txs.filter(function(t){ return (t.game||'').toLowerCase().includes('fire'); }).length;
+  document.getElementById('s-rbx').textContent = txs.filter(function(t){ return (t.game||'').toLowerCase().includes('roblox'); }).length;
+  var recent = txs.slice(0,5);
+  var tb = document.getElementById('recent-tb');
+  if (!recent.length) { tb.innerHTML = '<tr><td colspan="5" class="erow">Belum ada transaksi</td></tr>'; return; }
+  tb.innerHTML = recent.map(function(t) {
+    var gc = (t.game||'').toLowerCase().includes('fire') ? 'ff' : 'rbx';
+    var pc = (t.pay||'').toLowerCase() === 'dana' ? 'dana' : 'qris';
+    var d = t.date ? formatDate(new Date(t.date)) : '-';
+    return '<tr>' +
+      '<td><strong>' + (t.user||'-') + '</strong></td>' +
+      '<td><span class="badge ' + gc + '">' + (t.game||'-') + '</span></td>' +
+      '<td style="color:var(--gold);font-weight:700">' + (t.harga||'-') + '</td>' +
+      '<td><span class="badge ' + pc + '">' + (t.pay||'-') + '</span></td>' +
+      '<td style="font-size:11px;color:var(--muted)">' + d + '</td>' +
+      '</tr>';
+  }).join('');
+  document.getElementById('dash-time').textContent = formatDate(new Date());
+}
+
+// =========== CHAT ===========
+var activeChatUser = null;
+var lastChatSnapshot = '';
+
+function getChats() { return JSON.parse(localStorage.getItem('talentid_admin_chats') || '{}'); }
+function saveChats(c) { localStorage.setItem('talentid_admin_chats', JSON.stringify(c)); }
+
+function renderChatList() {
+  var chats = getChats();
+  var keys = Object.keys(chats);
+  var el = document.getElementById('cl-items');
+  if (!keys.length) {
+    el.innerHTML = '<div style="padding:20px;font-size:12px;color:var(--muted);text-align:center">Belum ada pesan masuk</div>';
+    return;
+  }
+  el.innerHTML = keys.map(function(user) {
+    var msgs = chats[user] || [];
+    var last = msgs.length ? msgs[msgs.length-1] : null;
+    var unread = msgs.filter(function(m){ return m.from === 'user' && !m.read; }).length;
+    var badge = unread > 0 ? '<span class="unread-badge">' + unread + '</span>' : '';
+    var isActive = activeChatUser === user;
+    return '<div class="cl-item' + (isActive ? ' active' : '') + '" onclick="openChat(\'' + user + '\')">' +
+      '<div class="cl-ava">👤</div>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div class="cl-name" style="display:flex;align-items:center;gap:6px">' + user + badge + '</div>' +
+        '<div class="cl-prev">' + (last ? last.text : '...') + '</div>' +
+      '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function openChat(user) {
+  activeChatUser = user;
+  var chats = getChats();
+  // Mark as read
+  if (chats[user]) {
+    chats[user] = chats[user].map(function(m) {
+      if (m.from === 'user') m.read = true;
+      return m;
+    });
+    saveChats(chats);
+  }
+  renderChatList();
+  var msgs = chats[user] || [];
+  var msgsHtml = msgs.length ? msgs.map(function(m) {
+    var prefix = m.from === 'admin' ? '👨‍💼 ' : '';
+    var align = m.from === 'admin' ? 'right' : 'left';
+    return '<div class="amsg ' + m.from + '">' + prefix + m.text +
+      '<div class="msg-time" style="text-align:' + align + '">' + fmtTime(m.time) + '</div></div>';
+  }).join('') : '<div style="text-align:center;color:var(--muted);font-size:12px;padding:20px">Mulai percakapan</div>';
+
+  var area = document.getElementById('cm-area');
+  area.innerHTML =
+    '<div class="cm-hd"><div class="cm-ava">👤</div><div><div class="cm-nm">' + user + '</div><div class="cm-st">🟢 Online</div></div></div>' +
+    '<div class="cm-msgs" id="cm-msgs">' + msgsHtml + '</div>' +
+    '<div class="cm-inp-row">' +
+      '<input class="cm-inp" id="cm-inp" placeholder="Balas ke ' + user + '..." onkeydown="if(event.key===\'Enter\')sendReply()">' +
+      '<button class="cm-send" onclick="sendReply()">Kirim ➤</button>' +
+    '</div>';
+
+  var ma = document.getElementById('cm-msgs');
+  if (ma) ma.scrollTop = ma.scrollHeight;
+}
+
+function sendReply() {
+  var inp = document.getElementById('cm-inp');
+  if (!inp || !activeChatUser) return;
+  var text = inp.value.trim();
+  if (!text) return;
+  var chats = getChats();
+  if (!chats[activeChatUser]) chats[activeChatUser] = [];
+  chats[activeChatUser].push({from:'admin', text:text, time:new Date().toISOString(), read:true});
+  saveChats(chats);
+  inp.value = '';
+  openChat(activeChatUser);
+  // Send to Telegram too
+  sendTG('📤 *ADMIN REPLY ke ' + activeChatUser + '*\n\n' + text);
+}
+
+// =========== CHAT NOTIF + SOUND ===========
+var unreadCount = 0;
+
+function playNotifSound() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    // Ding sound: 3 quick beeps
+    [0, 0.18, 0.36].forEach(function(offset) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, ctx.currentTime + offset);
+      osc.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + offset + 0.12);
+      gain.gain.setValueAtTime(0.4, ctx.currentTime + offset);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + offset + 0.15);
+      osc.start(ctx.currentTime + offset);
+      osc.stop(ctx.currentTime + offset + 0.15);
+    });
+  } catch(e) {}
+}
+
+function sendBrowserNotif(user, msg) {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    new Notification('💬 Pesan dari ' + user, {
+      body: msg,
+      icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💬</text></svg>',
+      tag: 'talentid-chat',
+      requireInteraction: false
+    });
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission();
+  }
+}
+
+function clearChatNotif() {
+  unreadCount = 0;
+  document.getElementById('chat-notif-dot').classList.remove('show');
+  document.title = 'TalentID Admin Panel';
+}
+
+function showChatNotif(user, msg) {
+  unreadCount++;
+  document.getElementById('chat-notif-dot').classList.add('show');
+  document.title = '(' + unreadCount + ') Pesan Baru — TalentID Admin';
+  showToast('💬 Pesan baru dari ' + user);
+  playNotifSound();
+  sendBrowserNotif(user, msg);
+}
+
+// Poll for new messages every 2 seconds
+setInterval(function() {
+  var chats = getChats();
+  var snap = JSON.stringify(chats);
+  if (snap === lastChatSnapshot) return;
+
+  // Check for new unread messages
+  if (lastChatSnapshot !== '') {
+    var oldChats = JSON.parse(lastChatSnapshot);
+    Object.keys(chats).forEach(function(user) {
+      var newMsgs = chats[user] || [];
+      var oldMsgs = oldChats[user] || [];
+      var newUserMsgs = newMsgs.filter(function(m, i) {
+        return m.from === 'user' && !m.read && i >= oldMsgs.length;
+      });
+      if (newUserMsgs.length > 0) {
+        var isOnChatPage = document.getElementById('pg-chat').classList.contains('active');
+        if (!isOnChatPage || activeChatUser !== user) {
+          showChatNotif(user, newUserMsgs[0].text);
+        }
+        // Refresh chat if open
+        if (activeChatUser === user) openChat(user);
+        renderChatList();
+      }
+    });
+  }
+
+  lastChatSnapshot = snap;
+
+  // Refresh chat list if on chat page
+  if (document.getElementById('pg-chat').classList.contains('active')) {
+    renderChatList();
+  }
+}, 2000);
+
+// =========== TELEGRAM ===========
+function loadTGConfig() {
+  document.getElementById('tg-tok').value = localStorage.getItem('talentid_tg_token') || '';
+  document.getElementById('tg-cid').value = localStorage.getItem('talentid_tg_chatid') || '';
+}
+function saveTG() {
+  var tok = document.getElementById('tg-tok').value.trim();
+  var cid = document.getElementById('tg-cid').value.trim();
+  if (!tok || !cid) { showToast('Isi token dan chat ID!', true); return; }
+  localStorage.setItem('talentid_tg_token', tok);
+  localStorage.setItem('talentid_tg_chatid', cid);
+  showToast('Token Telegram disimpan! ✅');
+}
+function testTG() {
+  var tok = localStorage.getItem('talentid_tg_token');
+  var cid = localStorage.getItem('talentid_tg_chatid');
+  if (!tok || !cid) { showToast('Simpan token dulu!', true); return; }
+  fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({chat_id:cid, text:'✅ *TalentID Store*\nBot Telegram berhasil terhubung!\n📅 ' + formatDate(new Date()), parse_mode:'Markdown'})
+  }).then(function(r){ return r.json(); }).then(function(d){
+    if (d.ok) showToast('✅ Test berhasil dikirim ke Telegram!');
+    else showToast('❌ Gagal: ' + (d.description||'Error'), true);
+  }).catch(function(){ showToast('❌ Gagal kirim. Cek token!', true); });
+}
+function sendTG(text) {
+  var tok = localStorage.getItem('talentid_tg_token');
+  var cid = localStorage.getItem('talentid_tg_chatid');
+  if (!tok || !cid) return;
+  fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({chat_id:cid, text:text, parse_mode:'Markdown'})
+  }).catch(function(){});
+}
+
+// =========== UTILS ===========
+function formatDate(d) {
+  var days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  var months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  var h = String(d.getHours()).padStart(2,'0');
+  var m = String(d.getMinutes()).padStart(2,'0');
+  return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + h + ':' + m;
+}
+function fmtTime(iso) {
+  if (!iso) return '';
+  var d = new Date(iso);
+  return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+function showToast(msg, isErr) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isErr ? ' err' : '') + ' show';
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
+// =========== INIT ===========
+function initPanel() {
+  refreshDash();
+  initStoreToggle();
+  loadTGConfig();
+  // Request notification permission
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+  setInterval(function(){ document.getElementById('dash-time').textContent = formatDate(new Date()); }, 30000);
+}
+</script>
+</body>
+</html>
