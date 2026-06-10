@@ -23,7 +23,7 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
 .lsub{text-align:center;font-size:12px;color:var(--muted);margin-bottom:28px;letter-spacing:2px;text-transform:uppercase}
 .lf{margin-bottom:16px}
 .lf label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
-.lf input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.lf input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:14px;outline:none}
 .lf input:focus{border-color:var(--acc)}.lf input::placeholder{color:var(--muted)}
 .lerr{background:rgba(255,60,60,.12);border:1px solid rgba(255,60,60,.3);color:#ff9090;font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
 .lerr.show{display:block}
@@ -32,44 +32,42 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
 
 /* LAYOUT */
 .wrap{display:flex;min-height:100vh}
-.sb{width:220px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100}
-.sblogo{padding:20px 18px 16px;border-bottom:1px solid var(--border)}
+.sb{width:225px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto}
+.sblogo{padding:18px 18px 14px;border-bottom:1px solid var(--border);flex-shrink:0}
 .sblogo-txt{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px}
 .sblogo-txt .r{color:#ff3c3c}.sblogo-txt .b{color:#00cfff}
 .sbsub{font-size:9px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
-.sbnav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px}
+.sbnav{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:3px}
 .sbi{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;cursor:pointer;color:var(--muted);font-size:13px;font-weight:700;border:none;background:transparent;width:100%;text-align:left;transition:all .2s;position:relative}
 .sbi:hover{background:var(--bg3);color:var(--text)}
 .sbi.active{background:rgba(0,207,255,.1);color:var(--acc);border:1px solid rgba(0,207,255,.15)}
-.sbi .si{font-size:16px}
+.sbi .si{font-size:15px}
 .ndot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--red);border-radius:50%;display:none;animation:pd .8s infinite}
 .ndot.show{display:block}
 @keyframes pd{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
-.sbfoot{padding:16px 12px;border-top:1px solid var(--border)}
-.logoutbtn{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;cursor:pointer;background:rgba(255,60,60,.08);border:1px solid rgba(255,60,60,.2);color:var(--red);font-family:'Exo 2',sans-serif;font-size:12px;font-weight:700;width:100%;transition:all .2s}
-.logoutbtn:hover{background:rgba(255,60,60,.18)}
+.sbfoot{padding:14px 12px;border-top:1px solid var(--border);flex-shrink:0}
+.logoutbtn{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;cursor:pointer;background:rgba(255,60,60,.08);border:1px solid rgba(255,60,60,.2);color:var(--red);font-family:'Exo 2',sans-serif;font-size:12px;font-weight:700;width:100%}
 
-.main{margin-left:220px;flex:1;padding:28px 24px}
-.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px}
-.pt{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;letter-spacing:3px}
+.main{margin-left:225px;flex:1;padding:24px 22px}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.pt{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;letter-spacing:3px}
 .pt .hi{color:var(--acc)}
 .ap{display:none}.ap.active{display:block}
 
-/* STAT CARDS */
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin-bottom:24px}
-.sc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 18px;position:relative;overflow:hidden}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 16px;position:relative;overflow:hidden}
 .sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
 .sc.bl::after{background:var(--acc)}.sc.gr::after{background:var(--green)}.sc.go::after{background:var(--gold)}.sc.re::after{background:var(--red)}
-.sl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.sv{font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px}
+.sl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.sv{font-family:'Rajdhani',sans-serif;font-size:34px;font-weight:700;line-height:1;margin-bottom:4px}
 .sv.bl{color:var(--acc)}.sv.gr{color:var(--green)}.sv.go{color:var(--gold)}.sv.re{color:var(--red)}
 .ss{font-size:11px;color:var(--muted)}
 
 /* TOGGLE */
-.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;margin-bottom:20px}
-.tcard h3{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
-.tcard p{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.6}
-.trow{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:26px 22px;margin-bottom:18px}
+.tcard h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+.tcard p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.trow{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .btog{position:relative;width:80px;height:42px;cursor:pointer;flex-shrink:0}
 .btog input{opacity:0;width:0;height:0;position:absolute}
 .ttrack{position:absolute;inset:0;border-radius:21px;background:rgba(255,60,60,.2);border:2px solid rgba(255,60,60,.4);transition:all .3s;display:flex;align-items:center;padding:4px}
@@ -81,14 +79,13 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
 .thint{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic}
 
 /* TABLE */
-.tw{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px}
-.th{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.th h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px}
-.si-inp{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;width:200px}
-.si-inp:focus{border-color:var(--acc)}
+.tw{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px}
+.th{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.th h3{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px}
+.si-inp{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;width:180px}
 .tbl{width:100%;border-collapse:collapse}
-.tbl th{padding:10px 16px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);background:var(--bg3)}
-.tbl td{padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl th{padding:9px 14px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);background:var(--bg3)}
+.tbl td{padding:11px 14px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
 .tbl tr:last-child td{border-bottom:none}
 .tbl tr:hover td{background:rgba(255,255,255,.02)}
 .badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;font-weight:700}
@@ -96,100 +93,207 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
 .badge.rbx{background:rgba(0,207,255,.12);color:#00cfff}
 .badge.dana{background:rgba(0,120,255,.12);color:#4499ff}
 .badge.qris{background:rgba(124,58,237,.12);color:#a78bfa}
-.erow{text-align:center;padding:40px;color:var(--muted);font-size:13px}
+.erow{text-align:center;padding:36px;color:var(--muted);font-size:13px}
 .delbtn{background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.25);color:var(--red);padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'Exo 2',sans-serif;font-weight:700}
-.delbtn:hover{background:rgba(255,60,60,.2)}
-.clrbtn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:7px 14px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:12px;cursor:pointer}
+.clrbtn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:6px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:12px;cursor:pointer}
 .clrbtn:hover{border-color:var(--red);color:var(--red)}
 
 /* CHAT */
-.chat-wrap{display:grid;grid-template-columns:1fr 260px;gap:14px;height:500px;margin-bottom:16px}
-.chat-main-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column}
-.chat-hd{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.chat-hd h3{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px}
-.chat-live{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--green);letter-spacing:2px}
-.chat-live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pd .8s infinite}
-.chat-msgs-area{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
-.chat-msgs-area::-webkit-scrollbar{width:3px}.chat-msgs-area::-webkit-scrollbar-thumb{background:var(--border2)}
-.cmsg{padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.5;max-width:80%}
-.cmsg.user{background:var(--bg3);align-self:flex-start;border-radius:4px 10px 10px 10px}
-.cmsg.admin-msg{background:linear-gradient(135deg,rgba(255,212,59,.12),rgba(255,140,0,.08));border:1px solid rgba(255,212,59,.25);border-left:3px solid var(--gold);align-self:flex-start;border-radius:4px 10px 10px 10px}
-.cmsg-name{font-size:9px;font-weight:800;margin-bottom:3px;letter-spacing:.5px}
-.cmsg-name.admin-name{color:var(--gold)}
-.cmsg-time{font-size:9px;color:var(--muted);margin-top:2px}
-.admin-badge-label{display:inline-flex;align-items:center;gap:3px;background:linear-gradient(135deg,#ffd43b,#ff8c00);color:#000;font-size:8px;font-weight:800;letter-spacing:1px;padding:1px 6px;border-radius:3px;text-transform:uppercase;margin-bottom:3px}
-.chat-inp-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);flex-shrink:0}
-.chat-inp-admin{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none}
-.chat-inp-admin:focus{border-color:var(--gold)}
-.chat-send-admin{background:linear-gradient(135deg,var(--gold),#ff8c00);border:none;border-radius:8px;padding:9px 16px;color:#000;font-family:'Exo 2',sans-serif;font-weight:800;font-size:12px;cursor:pointer}
+.chat-wrap{display:grid;grid-template-columns:1fr 240px;gap:12px;height:480px;margin-bottom:14px}
+.chat-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column}
+.chat-hd{padding:13px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-hd h3{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--green);letter-spacing:2px}
+.live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pd .8s infinite}
+.chat-area{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:7px}
+.chat-area::-webkit-scrollbar{width:3px}.chat-area::-webkit-scrollbar-thumb{background:var(--border2)}
+.cm{padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.5;max-width:85%}
+.cm.usr{background:var(--bg3);align-self:flex-start;border-radius:4px 10px 10px 10px}
+.cm.adm{background:linear-gradient(135deg,rgba(255,212,59,.12),rgba(255,140,0,.08));border:1px solid rgba(255,212,59,.25);border-left:3px solid var(--gold);align-self:flex-start;border-radius:4px 10px 10px 10px}
+.cm-sender{font-size:9px;font-weight:800;margin-bottom:3px}
+.cm-sender.adm-s{color:var(--gold)}
+.cm-time{font-size:9px;color:var(--muted);margin-top:2px}
+.adm-badge{display:inline-flex;align-items:center;background:linear-gradient(135deg,#ffd43b,#ff8c00);color:#000;font-size:8px;font-weight:800;letter-spacing:1px;padding:1px 6px;border-radius:3px;text-transform:uppercase;margin-bottom:3px}
+.chat-inp-row{display:flex;gap:8px;padding:10px 13px;border-top:1px solid var(--border);flex-shrink:0}
+.chat-inp{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none}
+.chat-inp:focus{border-color:var(--gold)}
+.chat-send{background:linear-gradient(135deg,var(--gold),#ff8c00);border:none;border-radius:8px;padding:9px 14px;color:#000;font-family:'Exo 2',sans-serif;font-weight:800;font-size:12px;cursor:pointer}
 
-.chat-side{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
-.chat-side h4{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
-.quick-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;cursor:pointer;text-align:left;transition:all .2s;width:100%;margin-bottom:6px}
-.quick-btn:hover{border-color:var(--gold);color:var(--gold)}
-.chat-stat{background:var(--bg3);border-radius:10px;padding:12px}
-.cstat-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:var(--muted)}
-.cstat-row:last-child{margin:0}
-.cstat-row span:last-child{color:var(--text);font-weight:700}
+.chat-side{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+.chat-side h4{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:var(--gold)}
+.qbtn{background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:8px 10px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;cursor:pointer;text-align:left;width:100%;margin-bottom:5px;transition:all .2s}
+.qbtn:hover{border-color:var(--gold);color:var(--gold)}
+.cstat{background:var(--bg3);border-radius:9px;padding:11px}
+.cstat-r{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;color:var(--muted)}
+.cstat-r:last-child{margin:0}.cstat-r span:last-child{color:var(--text);font-weight:700}
 
 /* REVIEWS */
-.rv-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px}
+.rv-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:12px}
 .rv-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px}
 .rv-name{font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px}
-.rv-ava{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
-.rv-stars{font-size:15px;letter-spacing:1px;margin-bottom:2px}
+.rv-ava{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
+.rv-stars{font-size:15px;margin-bottom:2px}
 .rv-date{font-size:10px;color:var(--muted)}
-.rv-msg{font-size:13px;line-height:1.6;background:var(--bg3);padding:12px;border-radius:8px;margin-bottom:10px}
-.rv-reply-box{background:rgba(255,212,59,.06);border:1px solid rgba(255,212,59,.2);border-radius:10px;padding:14px;margin-top:8px}
-.rv-reply-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:6px}
-.rv-reply-txt{font-size:13px;line-height:1.6}
-.rv-inp{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;resize:none;margin-bottom:8px}
+.rv-msg{font-size:13px;line-height:1.6;background:var(--bg3);padding:11px;border-radius:8px;margin-bottom:10px}
+.rv-reply{background:rgba(255,212,59,.06);border:1px solid rgba(255,212,59,.2);border-radius:10px;padding:12px}
+.rv-reply-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:5px}
+.rv-reply-txt{font-size:13px;line-height:1.5}
+.rv-inp{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none;resize:none;margin-bottom:7px}
 .rv-inp:focus{border-color:var(--gold)}
-.rv-replybtn{padding:8px 18px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--gold),#ff8c00);color:#000;font-family:'Exo 2',sans-serif;font-weight:800;font-size:12px;cursor:pointer}
-.rv-editbtn{padding:6px 14px;border-radius:8px;border:1px solid rgba(255,212,59,.3);background:transparent;color:var(--gold);font-family:'Exo 2',sans-serif;font-weight:700;font-size:11px;cursor:pointer;margin-top:8px}
+.rv-replybtn{padding:8px 16px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--gold),#ff8c00);color:#000;font-family:'Exo 2',sans-serif;font-weight:800;font-size:12px;cursor:pointer}
+.rv-editbtn{padding:5px 12px;border-radius:7px;border:1px solid rgba(255,212,59,.3);background:transparent;color:var(--gold);font-family:'Exo 2',sans-serif;font-weight:700;font-size:11px;cursor:pointer;margin-top:7px}
 
-/* CONFIG */
-.cfg{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 20px;margin-bottom:20px}
-.cfg h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
-.cfg p{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.6}
-.cfg-g{margin-bottom:14px}
-.cfg-g label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
-.cfg-g input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:11px 14px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none}
-.cfg-g input:focus{border-color:var(--acc)}.cfg-g input::placeholder{color:var(--muted)}
-.savebtn{background:linear-gradient(135deg,var(--acc),#0099cc);border:none;border-radius:9px;padding:11px 24px;color:#fff;font-family:'Exo 2',sans-serif;font-weight:800;font-size:13px;cursor:pointer;margin-right:8px;margin-bottom:8px}
+/* RESTOCK */
+.rs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.rs-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px}
+.rs-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.rs-name{font-weight:800;font-size:14px}
+.rs-stock{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;line-height:1;margin-bottom:4px}
+.rs-unit{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.rs-game-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;font-weight:700}
+.rs-game-badge.ff{background:rgba(255,60,60,.15);color:#ff6060}
+.rs-game-badge.rbx{background:rgba(0,207,255,.12);color:#00cfff}
+.rs-form{display:flex;gap:6px;margin-top:10px}
+.rs-inp{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:12px;outline:none;min-width:0}
+.rs-add-btn{padding:7px 12px;border-radius:7px;border:none;background:linear-gradient(135deg,var(--green),#00b35a);color:#000;font-family:'Exo 2',sans-serif;font-weight:800;font-size:11px;cursor:pointer;white-space:nowrap}
+.rs-progress{height:5px;background:var(--bg4);border-radius:3px;margin-top:10px;overflow:hidden}
+.rs-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--acc));border-radius:3px;transition:width .5s ease}
+.rs-low{color:var(--red)!important}
+.rs-announce-btn{padding:8px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--acc),#0099cc);color:#fff;font-family:'Exo 2',sans-serif;font-weight:700;font-size:11px;cursor:pointer}
+
+/* ADD ITEM FORM */
+.add-rs-form{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px}
+.add-rs-form h3{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;margin-bottom:16px}
+.form-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.form-row .cfg-g{flex:1;min-width:140px}
+.cfg-g{margin-bottom:12px}
+.cfg-g label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.cfg-g input,.cfg-g select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:10px 13px;color:var(--text);font-family:'Exo 2',sans-serif;font-size:13px;outline:none}
+.cfg-g input:focus,.cfg-g select:focus{border-color:var(--acc)}
+.cfg-g select option{background:var(--bg3)}
+
+/* CFG */
+.cfg{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 20px;margin-bottom:18px}
+.cfg h3{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+.cfg p{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.savebtn{background:linear-gradient(135deg,var(--acc),#0099cc);border:none;border-radius:9px;padding:10px 22px;color:#fff;font-family:'Exo 2',sans-serif;font-weight:800;font-size:13px;cursor:pointer;margin-right:8px;margin-bottom:8px}
 .savebtn.gr{background:linear-gradient(135deg,var(--green),#00b35a)}
 .savebtn.rd{background:linear-gradient(135deg,var(--red),#cc2200)}
-.savebtn.go{background:linear-gradient(135deg,var(--gold),#ff8c00);color:#000}
 
-/* CONFIRM MODAL */
-.conf-ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:800;display:none;align-items:center;justify-content:center;padding:20px}
-.conf-ov.show{display:flex}
-.conf-box{background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:32px 28px;width:100%;max-width:380px;text-align:center;animation:modin .3s ease}
+/* MODALS */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:800;display:none;align-items:center;justify-content:center;padding:20px}
+.ov.show{display:flex}
+.obox{background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:28px;width:100%;max-width:440px;max-height:80vh;overflow-y:auto;animation:modin .3s ease}
 @keyframes modin{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-.conf-box .ico{font-size:48px;margin-bottom:16px}
-.conf-box h3{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;letter-spacing:2px;margin-bottom:8px}
-.conf-box p{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6}
-.conf-btns{display:flex;gap:10px}
-.conf-btns button{flex:1;padding:12px;border-radius:10px;border:none;font-family:'Exo 2',sans-serif;font-weight:800;font-size:13px;cursor:pointer}
-.conf-yes{background:var(--red);color:#fff}
-.conf-no{background:var(--bg3);color:var(--text);border:1px solid var(--border2)!important}
-
-/* HIST MODAL */
-.hist-ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:700;display:none;align-items:center;justify-content:center;padding:20px}
-.hist-ov.show{display:flex}
-.hist-box{background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:28px;width:100%;max-width:600px;max-height:80vh;overflow-y:auto}
-.hist-close{float:right;background:var(--bg3);border:1px solid var(--border);color:var(--muted);width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.obox-close{float:right;background:var(--bg3);border:1px solid var(--border);color:var(--muted);width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 
 .toast{position:fixed;bottom:24px;right:24px;background:var(--bg2);border:1px solid var(--green);color:var(--green);padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;z-index:9999;display:none;animation:modin .3s ease;max-width:300px}
 .toast.err{border-color:var(--red);color:var(--red)}.toast.show{display:block}
 
-@media(max-width:750px){
-  .sb{display:none}.main{margin-left:0}
-  .chat-wrap{grid-template-columns:1fr;height:auto}
-}
+@media(max-width:750px){.sb{display:none}.main{margin-left:0}.chat-wrap{grid-template-columns:1fr;height:auto}}
 </style>
 </head>
 <body>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, set, get, update, remove, orderByChild, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCTy9WojcIykLHviZWVqoy51C8H9IPBl38",
+  authDomain: "talentidstore.firebaseapp.com",
+  databaseURL: "https://talentidstore-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "talentidstore",
+  storageBucket: "talentidstore.firebasestorage.app",
+  messagingSenderId: "219811848649",
+  appId: "1:219811848649:web:fc668676c6d3a923b48818"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.FB = {db, ref, push, onValue, set, get, update, remove};
+window.FB_READY = true;
+
+// ===== LISTEN STORE STATUS =====
+onValue(ref(db,'store/status'), function(snap){
+  window.FB_STATUS = snap.val() || 'on';
+  var tog = document.getElementById('store-tog');
+  if(tog){ tog.checked = (window.FB_STATUS==='on'); updateTogUI(window.FB_STATUS); }
+  updateDashStore(window.FB_STATUS);
+});
+onValue(ref(db,'store/offline_msg'), function(snap){
+  window.FB_OFFMSG = snap.val() || '';
+  var el = document.getElementById('off-msg'); if(el) el.value = window.FB_OFFMSG;
+});
+
+// ===== LISTEN CHAT =====
+onValue(ref(db,'chat'), function(snap){
+  var data = snap.val();
+  var msgs = data ? Object.values(data).sort(function(a,b){return (a.time||0)-(b.time||0);}) : [];
+  window.FB_CHAT = msgs;
+  var isOnChat = document.getElementById('pg-chat') && document.getElementById('pg-chat').classList.contains('active');
+  if(isOnChat) renderAdminChat(msgs);
+  // Notif new user msgs
+  if(window.lastChatLen !== undefined && msgs.length > window.lastChatLen){
+    var newMsgs = msgs.slice(window.lastChatLen);
+    newMsgs.forEach(function(m){
+      if(!m.is_admin){
+        document.getElementById('chat-dot').classList.add('show');
+        playNotif();
+        sendBrowserNotif(m.sender, m.message||'');
+        showToast('💬 '+m.sender+': '+(m.message||'').substring(0,40));
+      }
+    });
+  }
+  window.lastChatLen = msgs.length;
+});
+
+// ===== LISTEN REVIEWS =====
+onValue(ref(db,'reviews'), function(snap){
+  var data = snap.val();
+  var rvs = data ? Object.entries(data).map(function(e){return Object.assign({_key:e[0]},e[1]);}).sort(function(a,b){return (b.time||0)-(a.time||0);}) : [];
+  window.FB_REVIEWS = rvs;
+  // Notif
+  if(window.lastRvLen !== undefined && rvs.length > window.lastRvLen){
+    document.getElementById('rv-dot').classList.add('show');
+    var newRvs = rvs.slice(0, rvs.length - window.lastRvLen);
+    newRvs.forEach(function(r){ showToast('⭐ Ulasan baru dari '+r.name+' — '+r.stars+' bintang'); playNotif(); });
+  }
+  window.lastRvLen = rvs.length;
+  var isOnRv = document.getElementById('pg-reviews') && document.getElementById('pg-reviews').classList.contains('active');
+  if(isOnRv) renderAdminReviews(rvs);
+  // Update dashboard stats
+  refreshDashStats();
+});
+
+// ===== LISTEN TRANSACTIONS =====
+onValue(ref(db,'transactions'), function(snap){
+  var data = snap.val();
+  var txs = data ? Object.entries(data).map(function(e){return Object.assign({_key:e[0]},e[1]);}).sort(function(a,b){return (b.date||0)-(a.date||0);}) : [];
+  window.FB_TXS = txs;
+  // Notif new order
+  if(window.lastTxLen !== undefined && txs.length > window.lastTxLen){
+    var newTxs = txs.slice(0, txs.length - window.lastTxLen);
+    newTxs.forEach(function(t){ sendOrderTG(t); playNotif(); sendBrowserNotif('ORDER BARU — '+t.user, t.game+' '+t.nominal+' — '+t.harga); showToast('🛒 ORDER: '+t.user+' — '+t.harga); });
+    refreshDashStats();
+  }
+  window.lastTxLen = txs.length;
+  var isOnTx = document.getElementById('pg-transactions') && document.getElementById('pg-transactions').classList.contains('active');
+  if(isOnTx) renderTx();
+});
+
+// ===== LISTEN RESTOCK =====
+onValue(ref(db,'restock'), function(snap){
+  var data = snap.val();
+  window.FB_RESTOCK = data ? Object.entries(data).map(function(e){return Object.assign({_key:e[0]},e[1]);}) : [];
+  var isOn = document.getElementById('pg-restock') && document.getElementById('pg-restock').classList.contains('active');
+  if(isOn) renderRestock();
+});
+
+console.log('Firebase Admin connected!');
+</script>
 
 <!-- LOGIN -->
 <div id="ls">
@@ -204,26 +308,11 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
   </div>
 </div>
 
-<!-- RESTART CONFIRM -->
-<div class="conf-ov" id="restartConf">
-  <div class="conf-box">
-    <div class="ico">🔄</div>
-    <h3>RESTART WEBSITE?</h3>
-    <p>Reset chat publik. Data transaksi & akun tetap aman.</p>
-    <div class="conf-btns">
-      <button class="conf-yes" onclick="doRestart()">Ya, Restart!</button>
-      <button class="conf-no" onclick="document.getElementById('restartConf').classList.remove('show')">Batal</button>
-    </div>
-  </div>
-</div>
-
 <!-- HISTORY MODAL -->
-<div class="hist-ov" id="histOv">
-  <div class="hist-box">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-      <h3 style="font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:2px">RIWAYAT: <span id="hist-name" style="color:var(--acc)"></span></h3>
-      <button class="hist-close" onclick="document.getElementById('histOv').classList.remove('show')">✕</button>
-    </div>
+<div class="ov" id="histOv">
+  <div class="obox">
+    <button class="obox-close" onclick="document.getElementById('histOv').classList.remove('show')">✕</button>
+    <h3 style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:16px">RIWAYAT: <span id="hist-name" style="color:var(--acc)"></span></h3>
     <div id="hist-content"></div>
   </div>
 </div>
@@ -242,6 +331,7 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
       <button class="sbi" onclick="goPage('users',this)"><span class="si">👥</span>Pengguna</button>
       <button class="sbi" onclick="goPage('chat',this)"><span class="si">💬</span>Chat Publik<div class="ndot" id="chat-dot"></div></button>
       <button class="sbi" onclick="goPage('reviews',this)"><span class="si">⭐</span>Ulasan<div class="ndot" id="rv-dot"></div></button>
+      <button class="sbi" onclick="goPage('restock',this)"><span class="si">📦</span>Stok & Restock</button>
       <button class="sbi" onclick="goPage('settings',this)"><span class="si">⚙️</span>Pengaturan</button>
     </nav>
     <div class="sbfoot">
@@ -260,17 +350,14 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
         <div class="sc go"><div class="sl">Free Fire</div><div class="sv go" id="d-ff">0</div><div class="ss">Order FF</div></div>
         <div class="sc re"><div class="sl">Roblox</div><div class="sv re" id="d-rbx">0</div><div class="ss">Order Roblox</div></div>
       </div>
-      <div class="tw">
-        <div class="th"><h3>TRANSAKSI TERBARU</h3></div>
+      <div class="tw"><div class="th"><h3>TRANSAKSI TERBARU</h3></div>
         <table class="tbl"><thead><tr><th>Pembeli</th><th>Produk</th><th>Harga</th><th>Bayar</th><th>Tanggal</th></tr></thead><tbody id="d-tb"></tbody></table>
       </div>
-      <!-- Store status quick -->
-      <div class="tw">
-        <div class="th"><h3>STATUS TOKO</h3></div>
-        <div style="padding:18px;display:flex;align-items:center;gap:14px">
+      <div class="tw"><div class="th"><h3>STATUS TOKO</h3></div>
+        <div style="padding:16px;display:flex;align-items:center;gap:14px">
           <div style="font-size:28px" id="d-store-ico">🟢</div>
           <div><div style="font-weight:800;font-size:15px" id="d-store-txt">BUKA</div><div style="font-size:12px;color:var(--muted)">Pembeli bisa bertransaksi</div></div>
-          <button class="savebtn" style="margin-left:auto;padding:8px 16px;font-size:12px" onclick="goPage('store',document.querySelectorAll('.sbi')[1])">Kelola →</button>
+          <button class="savebtn" style="margin-left:auto;padding:7px 14px;font-size:12px" onclick="goPage('store',document.querySelectorAll('.sbi')[1])">Kelola →</button>
         </div>
       </div>
     </div>
@@ -280,9 +367,9 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
       <div class="ph"><div class="pt">STATUS <span class="hi">TOKO</span></div></div>
       <div class="tcard">
         <h3>🏪 Buka / Tutup Toko</h3>
-        <p>Geser toggle untuk membuka atau menutup TalentID Store.<br>
-        <strong style="color:var(--red)">TUTUP:</strong> Halaman offline tampil, tombol beli tidak bisa diklik.<br>
-        <strong style="color:var(--green)">BUKA:</strong> Pembeli bisa browsing dan beli normal.</p>
+        <p>Geser toggle. Status langsung terlihat oleh <strong style="color:var(--acc)">semua orang di semua HP</strong> secara real-time via Firebase.<br>
+        <strong style="color:var(--red)">TUTUP:</strong> Halaman offline tampil, tombol beli tidak bisa klik.<br>
+        <strong style="color:var(--green)">BUKA:</strong> Pembeli bisa beli normal.</p>
         <div class="trow">
           <label class="btog">
             <input type="checkbox" id="store-tog" onchange="toggleStore()">
@@ -294,7 +381,7 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
       </div>
       <div class="tcard">
         <h3>📢 Pesan Offline</h3>
-        <p>Pesan yang tampil saat toko tutup.</p>
+        <p>Pesan yang tampil saat toko tutup (real-time).</p>
         <div class="cfg-g"><label>Pesan</label><input type="text" id="off-msg" placeholder="Maaf, toko sedang tutup..."></div>
         <button class="savebtn" onclick="saveOffMsg()">Simpan Pesan</button>
       </div>
@@ -326,43 +413,42 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
     <div class="ap" id="pg-chat">
       <div class="ph"><div class="pt">CHAT <span class="hi">PUBLIK</span></div><button class="clrbtn" onclick="clearChat()">🗑 Hapus Chat</button></div>
       <div class="chat-wrap">
-        <div class="chat-main-box">
+        <div class="chat-box">
           <div class="chat-hd">
             <h3>💬 Monitor Chat Live</h3>
-            <div class="chat-live"><div class="chat-live-dot"></div>LIVE · <span id="chat-cnt">0 pesan</span></div>
+            <div class="live-badge"><div class="live-dot"></div>LIVE · <span id="chat-cnt">0</span></div>
           </div>
-          <div class="chat-msgs-area" id="chat-area"></div>
+          <div class="chat-area" id="chat-area"></div>
           <div class="chat-inp-row">
-            <input class="chat-inp-admin" id="chat-inp" placeholder="Kirim sebagai ADMIN PREMIUM..." onkeydown="if(event.key==='Enter')sendAdminChat()" maxlength="200">
-            <button class="chat-send-admin" onclick="sendAdminChat()">⭐ Kirim</button>
+            <input class="chat-inp" id="chat-inp" placeholder="Kirim sebagai ADMIN PREMIUM..." onkeydown="if(event.key==='Enter')sendAdminChat()" maxlength="200">
+            <button class="chat-send" onclick="sendAdminChat()">⭐ Kirim</button>
           </div>
         </div>
         <div class="chat-side">
           <div>
             <h4>⚡ QUICK REPLY</h4>
-            <button class="quick-btn" onclick="quickChat('Halo semua! Ada yang bisa dibantu? 😊')">👋 Sapa pembeli</button>
-            <button class="quick-btn" onclick="quickChat('Toko buka 24 jam! Order sekarang 🔥')">🔥 Promo</button>
-            <button class="quick-btn" onclick="quickChat('Proses top up hanya 1–5 menit ⚡')">⚡ Info cepat</button>
-            <button class="quick-btn" onclick="quickChat('Ada pertanyaan? Chat kami sekarang! 💬')">💬 Ajak chat</button>
-            <button class="quick-btn" onclick="quickChat('Terima kasih sudah belanja di TalentID Store! 🙏')">🙏 Terima kasih</button>
+            <button class="qbtn" onclick="quickChat('Halo semua! Ada yang bisa dibantu? 😊')">👋 Sapa pembeli</button>
+            <button class="qbtn" onclick="quickChat('Toko buka 24 jam! Order sekarang 🔥')">🔥 Promo</button>
+            <button class="qbtn" onclick="quickChat('Proses top up hanya 1–5 menit ⚡')">⚡ Info cepat</button>
+            <button class="qbtn" onclick="quickChat('Terima kasih sudah belanja di TalentID Store! 🙏')">🙏 Terima kasih</button>
           </div>
           <div>
             <h4>📊 STATISTIK</h4>
-            <div class="chat-stat">
-              <div class="cstat-row"><span>Total Pesan</span><span id="cs-total">0</span></div>
-              <div class="cstat-row"><span>Pesan Hari Ini</span><span id="cs-today">0</span></div>
-              <div class="cstat-row"><span>Pengguna Chat</span><span id="cs-users">0</span></div>
+            <div class="cstat">
+              <div class="cstat-r"><span>Total Pesan</span><span id="cs-total">0</span></div>
+              <div class="cstat-r"><span>Hari Ini</span><span id="cs-today">0</span></div>
+              <div class="cstat-r"><span>Pengguna</span><span id="cs-users">0</span></div>
             </div>
           </div>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--muted)">✅ Pesan admin tampil dengan badge <strong style="color:var(--gold)">⭐ ADMIN PREMIUM</strong> di website pembeli. Auto-refresh 2 detik.</p>
+      <p style="font-size:11px;color:var(--muted)">✅ Chat terhubung Firebase — real-time semua HP. Pesan admin tampil badge <strong style="color:var(--gold)">⭐ ADMIN PREMIUM</strong>.</p>
     </div>
 
     <!-- REVIEWS -->
     <div class="ap" id="pg-reviews">
       <div class="ph"><div class="pt">ULASAN <span class="hi">PEMBELI</span></div><button class="clrbtn" onclick="clearReviews()">🗑 Hapus Semua</button></div>
-      <div class="sg" style="margin-bottom:20px">
+      <div class="sg" style="margin-bottom:18px">
         <div class="sc go"><div class="sl">Total Ulasan</div><div class="sv go" id="rv-total">0</div><div class="ss">Semua ulasan</div></div>
         <div class="sc bl"><div class="sl">Rata-rata Bintang</div><div class="sv bl" id="rv-avg">5.0</div><div class="ss">dari 5 bintang</div></div>
         <div class="sc gr"><div class="sl">Sudah Dibalas</div><div class="sv gr" id="rv-replied">0</div><div class="ss">ulasan</div></div>
@@ -371,23 +457,47 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
       <div id="rv-list"></div>
     </div>
 
+    <!-- RESTOCK -->
+    <div class="ap" id="pg-restock">
+      <div class="ph"><div class="pt">STOK & <span class="hi">RESTOCK</span></div></div>
+
+      <!-- Add new item -->
+      <div class="add-rs-form">
+        <h3>➕ Tambah Item Stok</h3>
+        <div class="form-row">
+          <div class="cfg-g"><label>Nama Item</label><input type="text" id="rs-name" placeholder="Contoh: Diamond Free Fire"></div>
+          <div class="cfg-g"><label>Game</label>
+            <select id="rs-game">
+              <option value="ff">Free Fire</option>
+              <option value="rbx">Roblox</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="cfg-g"><label>Jumlah Stok Awal</label><input type="number" id="rs-qty" placeholder="Contoh: 5000" min="0"></div>
+          <div class="cfg-g"><label>Satuan</label><input type="text" id="rs-unit" placeholder="DM / Robux / dll"></div>
+        </div>
+        <button class="savebtn" onclick="addRestockItem()">➕ Tambah Item</button>
+      </div>
+
+      <!-- Stock cards -->
+      <div class="rs-grid" id="rs-grid">
+        <div style="text-align:center;color:var(--muted);font-size:13px;padding:20px;grid-column:1/-1">Memuat stok...</div>
+      </div>
+    </div>
+
     <!-- SETTINGS -->
     <div class="ap" id="pg-settings">
       <div class="ph"><div class="pt">PENG<span class="hi">ATURAN</span></div></div>
       <div class="cfg">
         <h3>🤖 Token Bot Telegram</h3>
-        <p>Notifikasi order otomatis ke Telegram. Format persis seperti pesan WA.<br>
-        <strong style="color:var(--red)">⚠️ Token lama sudah publik! Revoke dulu di @BotFather → /mybots → API Token → Revoke.</strong></p>
-        <div class="cfg-g"><label>Bot Token (Baru)</label><input type="text" id="tg-tok" placeholder="Masukkan token baru dari BotFather..."></div>
-        <div class="cfg-g"><label>Chat ID Admin</label><input type="text" id="tg-cid" placeholder="8248546813"></div>
+        <p>Notifikasi order otomatis ke Telegram kamu.<br>
+        <strong style="color:var(--red)">⚠️ Token lama SUDAH PUBLIK! Revoke sekarang di @BotFather → /mybots → API Token → Revoke!</strong></p>
+        <div class="cfg-g"><label>Bot Token (Baru)</label><input type="text" id="tg-tok" placeholder="Masukkan token BARU dari BotFather..."></div>
+        <div class="cfg-g"><label>Chat ID Admin</label><input type="text" id="tg-cid" placeholder="8648987950"></div>
         <button class="savebtn" onclick="saveTG()">💾 Simpan</button>
-        <button class="savebtn gr" onclick="testTG()">📨 Test</button>
+        <button class="savebtn gr" onclick="testTG()">📨 Test Kirim</button>
         <div style="margin-top:10px;font-size:11px;color:var(--muted)" id="tg-status"></div>
-      </div>
-      <div class="cfg">
-        <h3>🔄 Restart Website</h3>
-        <p>Reset chat publik. Data transaksi & akun tetap aman.</p>
-        <button class="savebtn rd" onclick="document.getElementById('restartConf').classList.add('show')">🔄 Restart Website</button>
       </div>
       <div class="cfg">
         <h3>🔐 Ubah Password Admin</h3>
@@ -405,560 +515,349 @@ body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-h
 <script>
 // ===== AUTH =====
 var CREDS = {user:'ADMIN', pass:'ADMIN2026'};
+window.lastChatLen = 0; window.lastRvLen = 0; window.lastTxLen = 0;
 
-function login() {
-  var u = document.getElementById('au').value.trim();
-  var p = document.getElementById('ap').value;
-  var err = document.getElementById('lerr');
-  err.classList.remove('show');
-  var saved = JSON.parse(localStorage.getItem('talentid_admin_creds') || 'null') || CREDS;
-  if (u === saved.user && p === saved.pass) {
-    document.getElementById('ls').style.display = 'none';
-    document.getElementById('aw').style.display = 'flex';
+function login(){
+  var u=document.getElementById('au').value.trim(),p=document.getElementById('ap').value;
+  var err=document.getElementById('lerr');err.classList.remove('show');
+  var saved=JSON.parse(localStorage.getItem('talentid_admin_creds')||'null')||CREDS;
+  if(u===saved.user&&p===saved.pass){
+    document.getElementById('ls').style.display='none';
+    document.getElementById('aw').style.display='flex';
     initPanel();
-  } else {
-    err.textContent = 'Username atau password salah!';
-    err.classList.add('show');
-  }
+  } else {err.textContent='Username atau password salah!';err.classList.add('show');}
 }
-
-function doLogout() {
-  if (!confirm('Logout?')) return;
-  document.getElementById('ls').style.display = 'flex';
-  document.getElementById('aw').style.display = 'none';
-}
-
-function changePass() {
-  var p1 = document.getElementById('np1').value;
-  var p2 = document.getElementById('np2').value;
-  if (p1.length < 6) { showToast('Password min. 6 karakter!', true); return; }
-  if (p1 !== p2) { showToast('Password tidak cocok!', true); return; }
-  var saved = JSON.parse(localStorage.getItem('talentid_admin_creds') || 'null') || CREDS;
-  saved.pass = p1;
-  localStorage.setItem('talentid_admin_creds', JSON.stringify(saved));
-  showToast('Password berhasil diubah!');
-  document.getElementById('np1').value = '';
-  document.getElementById('np2').value = '';
+function doLogout(){if(!confirm('Logout?'))return;document.getElementById('ls').style.display='flex';document.getElementById('aw').style.display='none';}
+function changePass(){
+  var p1=document.getElementById('np1').value,p2=document.getElementById('np2').value;
+  if(p1.length<6){showToast('Min. 6 karakter!',true);return;}
+  if(p1!==p2){showToast('Password tidak cocok!',true);return;}
+  var s=JSON.parse(localStorage.getItem('talentid_admin_creds')||'null')||CREDS;s.pass=p1;
+  localStorage.setItem('talentid_admin_creds',JSON.stringify(s));
+  showToast('Password diubah!');document.getElementById('np1').value='';document.getElementById('np2').value='';
 }
 
 // ===== NAV =====
-function goPage(name, btn) {
-  document.querySelectorAll('.ap').forEach(function(p) { p.classList.remove('active'); });
-  document.querySelectorAll('.sbi').forEach(function(b) { b.classList.remove('active'); });
-  document.getElementById('pg-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (name === 'dashboard') refreshDash();
-  if (name === 'transactions') renderTx();
-  if (name === 'users') renderUsers();
-  if (name === 'chat') { renderChat(); clearChatNotif(); }
-  if (name === 'reviews') renderReviews();
-  if (name === 'store') initToggle();
-  if (name === 'settings') loadTGConfig();
+function goPage(name,btn){
+  document.querySelectorAll('.ap').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.sbi').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('pg-'+name).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(name==='dashboard')refreshDash();
+  if(name==='transactions')renderTx();
+  if(name==='users')renderUsers();
+  if(name==='chat'){renderAdminChat(window.FB_CHAT||[]);clearChatNotif();}
+  if(name==='reviews'){renderAdminReviews(window.FB_REVIEWS||[]);document.getElementById('rv-dot').classList.remove('show');}
+  if(name==='restock')renderRestock();
+  if(name==='settings')loadTGConfig();
 }
 
-// ===== STORE TOGGLE =====
-function initToggle() {
-  var s = localStorage.getItem('talentid_status') || 'on';
-  document.getElementById('store-tog').checked = (s === 'on');
-  updateTogUI(s);
-  document.getElementById('off-msg').value = localStorage.getItem('talentid_offline_msg') || '';
+// ===== STORE TOGGLE (Firebase) =====
+function toggleStore(){
+  if(!window.FB_READY){showToast('Firebase belum siap!',true);return;}
+  var on=document.getElementById('store-tog').checked;
+  var s=on?'on':'off';
+  window.FB.set(window.FB.ref(window.FB.db,'store/status'),s);
+  showToast(on?'✅ Toko sekarang BUKA! (semua HP update)':'🔒 Toko sekarang TUTUP! (semua HP update)');
+  sendTG(on?'🟢 *TOKO DIBUKA* oleh Admin':'🔴 *TOKO DITUTUP* oleh Admin');
 }
-
-function toggleStore() {
-  var on = document.getElementById('store-tog').checked;
-  var s = on ? 'on' : 'off';
-  localStorage.setItem('talentid_status', s);
-  updateTogUI(s);
-  showToast(on ? '✅ Toko sekarang BUKA!' : '🔒 Toko sekarang TUTUP!');
-  updateDashStore(s);
+function updateTogUI(s){
+  var lbl=document.getElementById('tog-label'),thumb=document.getElementById('tog-thumb'),hint=document.getElementById('tog-hint');
+  if(s==='on'){if(lbl){lbl.textContent='🟢 BUKA';lbl.className='tstatus on';}if(thumb)thumb.textContent='✓';if(hint)hint.textContent='💡 Toko terbuka. Geser kiri untuk menutup.';}
+  else{if(lbl){lbl.textContent='🔴 TUTUP';lbl.className='tstatus off';}if(thumb)thumb.textContent='✕';if(hint)hint.textContent='💡 Toko tertutup. Geser kanan untuk membuka.';}
 }
-
-function updateTogUI(s) {
-  var lbl = document.getElementById('tog-label');
-  var thumb = document.getElementById('tog-thumb');
-  var hint = document.getElementById('tog-hint');
-  if (s === 'on') {
-    lbl.textContent = '🟢 BUKA'; lbl.className = 'tstatus on';
-    if (thumb) thumb.textContent = '✓';
-    if (hint) hint.textContent = '💡 Toko terbuka. Geser kiri untuk menutup.';
-  } else {
-    lbl.textContent = '🔴 TUTUP'; lbl.className = 'tstatus off';
-    if (thumb) thumb.textContent = '✕';
-    if (hint) hint.textContent = '💡 Toko tertutup. Geser kanan untuk membuka.';
-  }
-}
-
-function saveOffMsg() {
-  localStorage.setItem('talentid_offline_msg', document.getElementById('off-msg').value.trim());
+function saveOffMsg(){
+  if(!window.FB_READY){showToast('Firebase belum siap!',true);return;}
+  var msg=document.getElementById('off-msg').value.trim();
+  window.FB.set(window.FB.ref(window.FB.db,'store/offline_msg'),msg);
   showToast('Pesan offline disimpan!');
 }
-
-function updateDashStore(s) {
-  var ico = document.getElementById('d-store-ico');
-  var txt = document.getElementById('d-store-txt');
-  if (ico) ico.textContent = s === 'on' ? '🟢' : '🔴';
-  if (txt) txt.textContent = s === 'on' ? 'BUKA' : 'TUTUP';
+function updateDashStore(s){
+  var ico=document.getElementById('d-store-ico'),txt=document.getElementById('d-store-txt');
+  if(ico)ico.textContent=s==='on'?'🟢':'🔴';
+  if(txt)txt.textContent=s==='on'?'BUKA':'TUTUP';
 }
 
 // ===== TRANSACTIONS =====
-function getTx() { return JSON.parse(localStorage.getItem('talentid_transactions') || '[]'); }
-
-function renderTx() {
-  var q = (document.getElementById('tx-q').value || '').toLowerCase();
-  var list = getTx().filter(function(t) {
-    return !q || (t.user||'').toLowerCase().includes(q) || (t.game||'').toLowerCase().includes(q) || (t.nominal||'').toLowerCase().includes(q);
-  });
-  var tb = document.getElementById('tx-tb');
-  if (!list.length) { tb.innerHTML = '<tr><td colspan="8" class="erow">Belum ada transaksi</td></tr>'; return; }
-  tb.innerHTML = list.map(function(t, i) {
-    var gc = (t.game||'').toLowerCase().includes('fire') ? 'ff' : 'rbx';
-    var pc = (t.pay||'').toLowerCase() === 'dana' ? 'dana' : 'qris';
-    return '<tr><td><strong>' + esc(t.user||'-') + '</strong></td>' +
-      '<td><span class="badge ' + gc + '">' + esc(t.game||'-') + '</span></td>' +
-      '<td>' + esc(t.nominal||'-') + '</td>' +
-      '<td style="color:var(--muted);font-size:12px">' + esc(t.id||'-') + '</td>' +
-      '<td><strong style="color:var(--gold)">' + esc(t.harga||'-') + '</strong></td>' +
-      '<td><span class="badge ' + pc + '">' + esc(t.pay||'-') + '</span></td>' +
-      '<td style="font-size:11px;color:var(--muted)">' + (t.date ? fmtDate(new Date(t.date)) : '-') + '</td>' +
-      '<td><button class="delbtn" onclick="delTx(' + i + ')">✕</button></td></tr>';
+function renderTx(){
+  var q=(document.getElementById('tx-q').value||'').toLowerCase();
+  var txs=window.FB_TXS||[];
+  var list=txs.filter(function(t){return !q||(t.user||'').toLowerCase().includes(q)||(t.game||'').toLowerCase().includes(q)||(t.nominal||'').toLowerCase().includes(q);});
+  var tb=document.getElementById('tx-tb');
+  if(!list.length){tb.innerHTML='<tr><td colspan="8" class="erow">Belum ada transaksi</td></tr>';return;}
+  tb.innerHTML=list.map(function(t){
+    var gc=(t.game||'').toLowerCase().includes('fire')?'ff':'rbx';
+    var pc=(t.pay||'').toLowerCase()==='dana'?'dana':'qris';
+    var d=t.date?fmtDate(new Date(t.date)):'-';
+    return '<tr><td><strong>'+esc(t.user||'-')+'</strong></td><td><span class="badge '+gc+'">'+esc(t.game||'-')+'</span></td><td>'+esc(t.nominal||'-')+'</td><td style="color:var(--muted);font-size:12px">'+esc(t.id||'-')+'</td><td><strong style="color:var(--gold)">'+esc(t.harga||'-')+'</strong></td><td><span class="badge '+pc+'">'+esc(t.pay||'-')+'</span></td><td style="font-size:11px;color:var(--muted)">'+d+'</td><td><button class="delbtn" onclick="delTx(\''+t._key+'\')">✕</button></td></tr>';
   }).join('');
 }
-
-function delTx(i) {
-  if (!confirm('Hapus transaksi ini?')) return;
-  var list = getTx(); list.splice(i, 1);
-  localStorage.setItem('talentid_transactions', JSON.stringify(list));
-  renderTx(); showToast('Dihapus');
+function delTx(key){
+  if(!confirm('Hapus transaksi ini?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'transactions/'+key));
+  showToast('Dihapus');
+}
+function clearTx(){
+  if(!confirm('Hapus SEMUA transaksi?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'transactions'));
+  showToast('Semua transaksi dihapus');
 }
 
-function clearTx() {
-  if (!confirm('Hapus SEMUA transaksi?')) return;
-  localStorage.removeItem('talentid_transactions');
-  renderTx(); showToast('Semua transaksi dihapus');
-}
-
-// ===== USERS =====
-function getUsers() { return JSON.parse(localStorage.getItem('talentid_users') || '[]'); }
-
-function renderUsers() {
-  var users = getUsers(); var txs = getTx();
-  document.getElementById('u-cnt').textContent = users.length + ' akun';
-  var tb = document.getElementById('u-tb');
-  if (!users.length) { tb.innerHTML = '<tr><td colspan="5" class="erow">Belum ada pengguna</td></tr>'; return; }
-  tb.innerHTML = users.map(function(u, i) {
-    var cnt = txs.filter(function(t) { return t.user === u.name; }).length;
-    var d = u.createdAt ? fmtDate(new Date(u.createdAt)) : '-';
-    return '<tr><td><strong>' + esc(u.name) + '</strong></td>' +
-      '<td style="font-size:11px;color:var(--muted)">' + d + '</td>' +
-      '<td><span style="color:var(--gold);font-weight:700">' + cnt + '</span> order</td>' +
-      '<td><button class="savebtn" style="padding:5px 12px;font-size:11px;margin:0" onclick="showHist(\'' + esc(u.name) + '\')">Lihat</button></td>' +
-      '<td><button class="delbtn" onclick="delUser(' + i + ')">✕</button></td></tr>';
+// ===== USERS (localStorage) =====
+function getUsers(){return JSON.parse(localStorage.getItem('talentid_users')||'[]');}
+function renderUsers(){
+  var users=getUsers();var txs=window.FB_TXS||[];
+  document.getElementById('u-cnt').textContent=users.length+' akun';
+  var tb=document.getElementById('u-tb');
+  if(!users.length){tb.innerHTML='<tr><td colspan="5" class="erow">Belum ada pengguna</td></tr>';return;}
+  tb.innerHTML=users.map(function(u,i){
+    var cnt=txs.filter(function(t){return t.user===u.name;}).length;
+    var d=u.createdAt?fmtDate(new Date(u.createdAt)):'-';
+    return '<tr><td><strong>'+esc(u.name)+'</strong></td><td style="font-size:11px;color:var(--muted)">'+d+'</td><td><span style="color:var(--gold);font-weight:700">'+cnt+'</span> order</td><td><button class="savebtn" style="padding:5px 12px;font-size:11px;margin:0" onclick="showHist(\''+esc(u.name)+'\')">Lihat</button></td><td><button class="delbtn" onclick="delUser('+i+')">✕</button></td></tr>';
   }).join('');
 }
-
-function showHist(name) {
-  var txs = getTx().filter(function(t) { return t.user === name; });
-  document.getElementById('hist-name').textContent = name;
-  var c = document.getElementById('hist-content');
-  if (!txs.length) { c.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px">Belum ada transaksi</p>'; }
-  else {
-    c.innerHTML = '<table class="tbl" style="width:100%"><thead><tr><th>Game</th><th>Nominal</th><th>Harga</th><th>Bayar</th><th>Tanggal</th></tr></thead><tbody>' +
-      txs.map(function(t) {
-        var gc = (t.game||'').toLowerCase().includes('fire') ? 'ff' : 'rbx';
-        var pc = (t.pay||'').toLowerCase() === 'dana' ? 'dana' : 'qris';
-        return '<tr><td><span class="badge ' + gc + '">' + esc(t.game||'-') + '</span></td><td>' + esc(t.nominal||'-') + '</td><td style="color:var(--gold);font-weight:700">' + esc(t.harga||'-') + '</td><td><span class="badge ' + pc + '">' + esc(t.pay||'-') + '</span></td><td style="font-size:11px;color:var(--muted)">' + (t.date ? fmtDate(new Date(t.date)) : '-') + '</td></tr>';
-      }).join('') + '</tbody></table>';
-  }
+function showHist(name){
+  var txs=(window.FB_TXS||[]).filter(function(t){return t.user===name;});
+  document.getElementById('hist-name').textContent=name;
+  var c=document.getElementById('hist-content');
+  if(!txs.length){c.innerHTML='<p style="color:var(--muted);text-align:center;padding:20px">Belum ada transaksi</p>';}
+  else{c.innerHTML='<table class="tbl" style="width:100%"><thead><tr><th>Game</th><th>Nominal</th><th>Harga</th><th>Bayar</th><th>Tanggal</th></tr></thead><tbody>'+txs.map(function(t){var gc=(t.game||'').toLowerCase().includes('fire')?'ff':'rbx';var pc=(t.pay||'').toLowerCase()==='dana'?'dana':'qris';return '<tr><td><span class="badge '+gc+'">'+esc(t.game||'-')+'</span></td><td>'+esc(t.nominal||'-')+'</td><td style="color:var(--gold);font-weight:700">'+esc(t.harga||'-')+'</td><td><span class="badge '+pc+'">'+esc(t.pay||'-')+'</span></td><td style="font-size:11px;color:var(--muted)">'+(t.date?fmtDate(new Date(t.date)):'-')+'</td></tr>';}).join('')+'</tbody></table>';}
   document.getElementById('histOv').classList.add('show');
 }
-
-function delUser(i) {
-  if (!confirm('Hapus akun ini?')) return;
-  var users = getUsers(); users.splice(i, 1);
-  localStorage.setItem('talentid_users', JSON.stringify(users));
-  renderUsers(); showToast('Akun dihapus');
+function delUser(i){
+  if(!confirm('Hapus akun ini?'))return;
+  var users=getUsers();users.splice(i,1);localStorage.setItem('talentid_users',JSON.stringify(users));
+  renderUsers();showToast('Akun dihapus');
 }
-
-function clearUsers() {
-  if (!confirm('Hapus SEMUA akun?')) return;
-  localStorage.removeItem('talentid_users');
-  localStorage.removeItem('talentid_loggedin');
-  renderUsers(); showToast('Semua akun dihapus');
+function clearUsers(){
+  if(!confirm('Hapus SEMUA akun?'))return;
+  localStorage.removeItem('talentid_users');localStorage.removeItem('talentid_loggedin');
+  renderUsers();showToast('Semua akun dihapus');
 }
 
 // ===== DASHBOARD =====
-function refreshDash() {
-  var txs = getTx(); var users = getUsers();
-  document.getElementById('d-tx').textContent = txs.length;
-  document.getElementById('d-us').textContent = users.length;
-  document.getElementById('d-ff').textContent = txs.filter(function(t) { return (t.game||'').toLowerCase().includes('fire'); }).length;
-  document.getElementById('d-rbx').textContent = txs.filter(function(t) { return (t.game||'').toLowerCase().includes('roblox'); }).length;
-  var recent = txs.slice(0, 5);
-  var tb = document.getElementById('d-tb');
-  if (!recent.length) { tb.innerHTML = '<tr><td colspan="5" class="erow">Belum ada transaksi</td></tr>'; return; }
-  tb.innerHTML = recent.map(function(t) {
-    var gc = (t.game||'').toLowerCase().includes('fire') ? 'ff' : 'rbx';
-    var pc = (t.pay||'').toLowerCase() === 'dana' ? 'dana' : 'qris';
-    return '<tr><td><strong>' + esc(t.user||'-') + '</strong></td><td><span class="badge ' + gc + '">' + esc(t.game||'-') + '</span></td><td style="color:var(--gold);font-weight:700">' + esc(t.harga||'-') + '</td><td><span class="badge ' + pc + '">' + esc(t.pay||'-') + '</span></td><td style="font-size:11px;color:var(--muted)">' + (t.date ? fmtDate(new Date(t.date)) : '-') + '</td></tr>';
+function refreshDash(){
+  var txs=window.FB_TXS||[];var users=getUsers();
+  document.getElementById('d-tx').textContent=txs.length;
+  document.getElementById('d-us').textContent=users.length;
+  document.getElementById('d-ff').textContent=txs.filter(function(t){return(t.game||'').toLowerCase().includes('fire');}).length;
+  document.getElementById('d-rbx').textContent=txs.filter(function(t){return(t.game||'').toLowerCase().includes('roblox');}).length;
+  var tb=document.getElementById('d-tb');
+  var recent=txs.slice(0,5);
+  if(!recent.length){tb.innerHTML='<tr><td colspan="5" class="erow">Belum ada transaksi</td></tr>';return;}
+  tb.innerHTML=recent.map(function(t){var gc=(t.game||'').toLowerCase().includes('fire')?'ff':'rbx';var pc=(t.pay||'').toLowerCase()==='dana'?'dana':'qris';return '<tr><td><strong>'+esc(t.user||'-')+'</strong></td><td><span class="badge '+gc+'">'+esc(t.game||'-')+'</span></td><td style="color:var(--gold);font-weight:700">'+esc(t.harga||'-')+'</td><td><span class="badge '+pc+'">'+esc(t.pay||'-')+'</span></td><td style="font-size:11px;color:var(--muted)">'+(t.date?fmtDate(new Date(t.date)):'-')+'</td></tr>';}).join('');
+  document.getElementById('dash-time').textContent=fmtDate(new Date());
+  updateDashStore(window.FB_STATUS||'on');
+}
+function refreshDashStats(){
+  if(document.getElementById('pg-dashboard').classList.contains('active'))refreshDash();
+}
+
+// ===== CHAT (Firebase) =====
+function renderAdminChat(msgs){
+  var area=document.getElementById('chat-area');if(!area)return;
+  var cnt=document.getElementById('chat-cnt');if(cnt)cnt.textContent=msgs.length;
+  var today=new Date().toDateString(),todayMsgs=msgs.filter(function(m){return new Date(m.time||0).toDateString()===today;});
+  var unique=[];msgs.forEach(function(m){if(unique.indexOf(m.sender)<0)unique.push(m.sender);});
+  var s1=document.getElementById('cs-total'),s2=document.getElementById('cs-today'),s3=document.getElementById('cs-users');
+  if(s1)s1.textContent=msgs.length;if(s2)s2.textContent=todayMsgs.length;if(s3)s3.textContent=unique.length;
+  if(!msgs.length){area.innerHTML='<div style="text-align:center;color:var(--muted);font-size:12px;padding:20px">Belum ada chat</div>';return;}
+  var wasBottom=area.scrollHeight-area.scrollTop-area.clientHeight<60;
+  area.innerHTML=msgs.map(function(m){
+    var isAdm=m.is_admin;
+    var color=getAvaColor(m.sender);var init=m.sender.charAt(0).toUpperCase();
+    var t=new Date(m.time||Date.now());
+    var ts=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+    var txt=esc(m.message||'');
+    if(isAdm){return '<div class="cm adm"><div class="adm-badge">⭐ ADMIN PREMIUM</div><div class="cm-sender adm-s">'+esc(m.sender)+'</div><div>'+txt+'</div><div class="cm-time">'+ts+'</div></div>';}
+    return '<div class="cm usr"><div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><div style="width:18px;height:18px;border-radius:50%;background:'+color+';display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff">'+init+'</div><div class="cm-sender">'+esc(m.sender)+'</div></div><div>'+txt+'</div><div class="cm-time">'+ts+'</div></div>';
   }).join('');
-  document.getElementById('dash-time').textContent = fmtDate(new Date());
-  var s = localStorage.getItem('talentid_status') || 'on';
-  updateDashStore(s);
+  if(wasBottom)area.scrollTop=area.scrollHeight;
 }
-
-// ===== CHAT =====
-var lastChatCount = 0;
-var chatNotifCount = 0;
-
-function getChat() { return JSON.parse(localStorage.getItem('talentid_public_chat') || '[]'); }
-function saveChat(m) { localStorage.setItem('talentid_public_chat', JSON.stringify(m)); }
-
-function getAvaColor(name) {
-  var c = ['#5865f2','#e91e63','#00cfff','#00e87a','#ff8c00','#a78bfa','#ff3c3c','#ec4899'];
-  var i = 0; for (var j = 0; j < name.length; j++) i += name.charCodeAt(j);
-  return c[i % c.length];
+function sendAdminChat(){
+  if(!window.FB_READY)return;
+  var inp=document.getElementById('chat-inp');var text=inp.value.trim();if(!text)return;
+  window.FB.push(window.FB.ref(window.FB.db,'chat'),{sender:'ADMIN',message:text,is_admin:true,time:Date.now()});
+  inp.value='';
+  sendTG('📢 *ADMIN chat publik*\n\n'+text);
+  showToast('✅ Terkirim ke chat publik!');
 }
-
-function renderChat() {
-  var msgs = getChat();
-  var area = document.getElementById('chat-area');
-  if (!area) return;
-  var cnt = document.getElementById('chat-cnt');
-  if (cnt) cnt.textContent = msgs.length + ' pesan';
-
-  // Stats
-  var today = new Date().toDateString();
-  var todayMsgs = msgs.filter(function(m) { return new Date(m.time||0).toDateString() === today; });
-  var unique = []; msgs.forEach(function(m) { if (unique.indexOf(m.sender) < 0) unique.push(m.sender); });
-  var s1 = document.getElementById('cs-total'); if (s1) s1.textContent = msgs.length;
-  var s2 = document.getElementById('cs-today'); if (s2) s2.textContent = todayMsgs.length;
-  var s3 = document.getElementById('cs-users'); if (s3) s3.textContent = unique.length;
-
-  if (!msgs.length) { area.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:12px;padding:20px">Belum ada chat publik</div>'; return; }
-
-  var wasBottom = area.scrollHeight - area.scrollTop - area.clientHeight < 60;
-  area.innerHTML = msgs.map(function(m) {
-    var isAdm = m.is_admin || m.isAdmin;
-    var color = getAvaColor(m.sender);
-    var init = m.sender.charAt(0).toUpperCase();
-    var t = new Date(m.time || Date.now());
-    var ts = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
-    var txt = esc(m.message || m.text || '');
-    if (isAdm) {
-      return '<div class="cmsg admin-msg" style="max-width:85%">' +
-        '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:22px;height:22px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff">' + init + '</div><div class="cmsg-name admin-name">' + esc(m.sender) + '</div></div>' +
-        '<div class="admin-badge-label">⭐ ADMIN PREMIUM</div>' +
-        '<div style="font-size:13px;line-height:1.5">' + txt + '</div>' +
-        '<div class="cmsg-time">' + ts + '</div>' +
-        '</div>';
-    }
-    return '<div class="cmsg user">' +
-      '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:22px;height:22px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff">' + init + '</div><div class="cmsg-name">' + esc(m.sender) + '</div></div>' +
-      '<div style="font-size:13px;line-height:1.5">' + txt + '</div>' +
-      '<div class="cmsg-time">' + ts + '</div>' +
-      '</div>';
-  }).join('');
-  if (wasBottom) area.scrollTop = area.scrollHeight;
-  lastChatCount = msgs.length;
+function quickChat(text){
+  if(!window.FB_READY)return;
+  window.FB.push(window.FB.ref(window.FB.db,'chat'),{sender:'ADMIN',message:text,is_admin:true,time:Date.now()});
+  sendTG('📢 *ADMIN*\n'+text);showToast('✅ Terkirim!');
 }
-
-function sendAdminChat() {
-  var inp = document.getElementById('chat-inp');
-  var text = inp.value.trim();
-  if (!text) return;
-  var msgs = getChat();
-  msgs.push({sender:'ADMIN', message:text, text:text, is_admin:true, isAdmin:true, time:new Date().toISOString()});
-  if (msgs.length > 200) msgs = msgs.slice(msgs.length - 200);
-  saveChat(msgs);
-  inp.value = '';
-  renderChat();
-  sendTG('📢 *ADMIN chat publik*\n\n' + text);
-  showToast('✅ Pesan terkirim ke chat publik!');
-}
-
-function quickChat(text) {
-  var msgs = getChat();
-  msgs.push({sender:'ADMIN', message:text, text:text, is_admin:true, isAdmin:true, time:new Date().toISOString()});
-  if (msgs.length > 200) msgs = msgs.slice(msgs.length - 200);
-  saveChat(msgs);
-  renderChat();
-  sendTG('📢 *ADMIN chat publik*\n\n' + text);
-  showToast('✅ Terkirim!');
-}
-
-function clearChat() {
-  if (!confirm('Hapus semua chat publik?')) return;
-  localStorage.removeItem('talentid_public_chat');
-  lastChatCount = 0;
-  renderChat();
+function clearChat(){
+  if(!confirm('Hapus semua chat publik?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'chat'));
   showToast('Chat dihapus');
 }
+function clearChatNotif(){document.getElementById('chat-dot').classList.remove('show');document.title='TalentID Admin';}
 
-function clearChatNotif() {
-  chatNotifCount = 0;
-  document.getElementById('chat-dot').classList.remove('show');
-  document.title = 'TalentID Admin';
-}
-
-function playNotif() {
-  try {
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-    [0, 0.2, 0.4].forEach(function(off) {
-      var o = ctx.createOscillator(); var g = ctx.createGain();
-      o.connect(g); g.connect(ctx.destination);
-      o.type = 'sine'; o.frequency.setValueAtTime(880, ctx.currentTime + off);
-      o.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + off + 0.12);
-      g.gain.setValueAtTime(0.5, ctx.currentTime + off);
-      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + off + 0.15);
-      o.start(ctx.currentTime + off); o.stop(ctx.currentTime + off + 0.15);
-    });
-  } catch(e) {}
-}
-
-function sendBrowserNotif(sender, msg) {
-  if (!('Notification' in window)) return;
-  if (Notification.permission === 'granted') {
-    new Notification('💬 Chat dari ' + sender, {body: msg, tag: 'talentid-chat'});
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission();
-  }
-}
-
-// ===== REVIEWS =====
-var lastRvCount = 0;
-
-function getReviews() { return JSON.parse(localStorage.getItem('talentid_reviews') || '[]'); }
-function saveReviews(r) { localStorage.setItem('talentid_reviews', JSON.stringify(r)); }
-
-function renderReviews() {
-  var reviews = getReviews();
-  var total = reviews.length;
-  var replied = reviews.filter(function(r) { return r.reply; }).length;
-  var avg = total ? (reviews.reduce(function(s,r) { return s + r.stars; }, 0) / total).toFixed(1) : '5.0';
-  var e1=document.getElementById('rv-total'), e2=document.getElementById('rv-avg');
-  var e3=document.getElementById('rv-replied'), e4=document.getElementById('rv-pending');
-  if(e1) e1.textContent=total; if(e2) e2.textContent=avg;
-  if(e3) e3.textContent=replied; if(e4) e4.textContent=total-replied;
-
-  // Review notif dot
-  if (total > lastRvCount && lastRvCount > 0) {
-    document.getElementById('rv-dot').classList.add('show');
-  }
-  lastRvCount = total;
-
-  var list = document.getElementById('rv-list');
-  if (!list) return;
-  if (!reviews.length) { list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:30px">Belum ada ulasan</div>'; return; }
-
-  list.innerHTML = reviews.slice().reverse().map(function(r, revIdx) {
-    var actualIdx = reviews.length - 1 - revIdx;
-    var color = getAvaColor(r.name);
-    var init = r.name.charAt(0).toUpperCase();
-    var stars = ''; for (var i = 0; i < 5; i++) stars += i < r.stars ? '⭐' : '☆';
-    var d = new Date(r.time);
-    var ds = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
-
-    var replyHtml = r.reply ?
-      '<div class="rv-reply-box"><div class="rv-reply-lbl">⭐ Balasan Admin TalentID</div><div class="rv-reply-txt">' + esc(r.reply) + '</div><button class="rv-editbtn" onclick="editReply(' + actualIdx + ')">✏️ Edit Balasan</button></div>' :
-      '<div style="margin-top:10px"><textarea class="rv-inp" id="rv-inp-' + actualIdx + '" rows="2" placeholder="Tulis balasan admin..."></textarea><button class="rv-replybtn" onclick="sendReply(' + actualIdx + ')">⭐ Kirim Balasan</button></div>';
-
-    return '<div class="rv-card">' +
-      '<div class="rv-top"><div class="rv-name"><div class="rv-ava" style="background:' + color + '">' + init + '</div>' + esc(r.name) + '</div><div><div class="rv-stars">' + stars + '</div><div class="rv-date">' + ds + '</div></div><button class="delbtn" onclick="delReview(' + actualIdx + ')">✕</button></div>' +
-      '<div class="rv-msg">' + esc(r.message) + '</div>' +
-      replyHtml +
-      '</div>';
+// ===== REVIEWS (Firebase) =====
+function renderAdminReviews(reviews){
+  var e1=document.getElementById('rv-total'),e2=document.getElementById('rv-avg'),e3=document.getElementById('rv-replied'),e4=document.getElementById('rv-pending');
+  var total=reviews.length,replied=reviews.filter(function(r){return r.reply;}).length;
+  var avg=total?(reviews.reduce(function(s,r){return s+r.stars;},0)/total).toFixed(1):'5.0';
+  if(e1)e1.textContent=total;if(e2)e2.textContent=avg;if(e3)e3.textContent=replied;if(e4)e4.textContent=total-replied;
+  var list=document.getElementById('rv-list');if(!list)return;
+  if(!reviews.length){list.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:30px">Belum ada ulasan</div>';return;}
+  list.innerHTML=reviews.map(function(r){
+    var color=getAvaColor(r.name);var init=r.name.charAt(0).toUpperCase();
+    var stars='';for(var i=0;i<5;i++)stars+=i<r.stars?'⭐':'☆';
+    var d=new Date(r.time);var ds=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+    var replyHtml=r.reply?
+      '<div class="rv-reply"><div class="rv-reply-lbl">⭐ Balasan Admin TalentID</div><div class="rv-reply-txt">'+esc(r.reply)+'</div><button class="rv-editbtn" onclick="editReply(\''+r._key+'\')">✏️ Edit</button></div>':
+      '<div style="margin-top:10px"><textarea class="rv-inp" id="rv-inp-'+r._key+'" rows="2" placeholder="Tulis balasan admin..."></textarea><button class="rv-replybtn" onclick="sendReply(\''+r._key+'\')">⭐ Kirim Balasan</button></div>';
+    return '<div class="rv-card"><div class="rv-top"><div class="rv-name"><div class="rv-ava" style="background:'+color+'">'+init+'</div>'+esc(r.name)+'</div><div><div class="rv-stars">'+stars+'</div><div class="rv-date">'+ds+'</div></div><button class="delbtn" onclick="delReview(\''+r._key+'\')">✕</button></div><div class="rv-msg">'+esc(r.message)+'</div>'+replyHtml+'</div>';
   }).join('');
 }
-
-function sendReply(idx) {
-  var inp = document.getElementById('rv-inp-' + idx);
-  if (!inp) return;
-  var text = inp.value.trim();
-  if (!text) { showToast('Tulis balasan dulu!', true); return; }
-  var reviews = getReviews();
-  reviews[idx].reply = text;
-  saveReviews(reviews);
-  renderReviews();
-  showToast('✅ Balasan terkirim! Tampil di website.');
-  sendTG('⭐ *ADMIN BALAS ULASAN*\n👤 ' + reviews[idx].name + '\n💬 ' + text);
+function sendReply(key){
+  var inp=document.getElementById('rv-inp-'+key);if(!inp)return;
+  var text=inp.value.trim();if(!text){showToast('Tulis balasan!',true);return;}
+  window.FB.update(window.FB.ref(window.FB.db,'reviews/'+key),{reply:text});
+  showToast('✅ Balasan tersimpan!');
+  var r=(window.FB_REVIEWS||[]).find(function(x){return x._key===key;});
+  if(r)sendTG('⭐ *ADMIN BALAS ULASAN*\n👤 '+r.name+'\n💬 '+text);
+}
+function editReply(key){window.FB.update(window.FB.ref(window.FB.db,'reviews/'+key),{reply:''});}
+function delReview(key){
+  if(!confirm('Hapus ulasan ini?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'reviews/'+key));showToast('Ulasan dihapus');
+}
+function clearReviews(){
+  if(!confirm('Hapus SEMUA ulasan?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'reviews'));showToast('Semua ulasan dihapus');
 }
 
-function editReply(idx) {
-  var reviews = getReviews();
-  reviews[idx].reply = '';
-  saveReviews(reviews);
-  renderReviews();
+// ===== RESTOCK (Firebase) =====
+function renderRestock(){
+  var items=window.FB_RESTOCK||[];
+  var grid=document.getElementById('rs-grid');if(!grid)return;
+  if(!items.length){grid.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px;grid-column:1/-1">Belum ada item stok. Tambahkan di atas!</div>';return;}
+  grid.innerHTML=items.map(function(item){
+    var gc=item.game==='ff'?'ff':'rbx';
+    var max=item.maxQty||item.qty||1;
+    var pct=Math.min(100,Math.round((item.qty/max)*100));
+    var isLow=item.qty<=(max*0.2);
+    return '<div class="rs-card">'+
+      '<div class="rs-card-top"><div class="rs-name">'+esc(item.name)+'</div><span class="rs-game-badge '+gc+'">'+( item.game==='ff'?'Free Fire':'Roblox')+'</span></div>'+
+      '<div class="rs-stock '+(isLow?'rs-low':'')+'">'+item.qty.toLocaleString('id-ID')+'</div>'+
+      '<div class="rs-unit">'+esc(item.unit||'')+'</div>'+
+      (isLow?'<div style="font-size:11px;color:var(--red);margin-bottom:8px">⚠️ Stok hampir habis!</div>':'')+
+      '<div class="rs-progress"><div class="rs-bar" style="width:'+pct+'%"></div></div>'+
+      '<div class="rs-form">'+
+        '<input class="rs-inp" type="number" id="rs-add-'+item._key+'" placeholder="Tambah..." min="0">'+
+        '<button class="rs-add-btn" onclick="addStock(\''+item._key+'\','+item.qty+')">+ Restock</button>'+
+      '</div>'+
+      '<div style="display:flex;gap:6px;margin-top:8px">'+
+        '<button class="rs-announce-btn" onclick="announceRestock(\''+esc(item.name)+'\','+item.qty+',\''+esc(item.unit||'')+'\')">📣 Umumkan</button>'+
+        '<button class="delbtn" onclick="delRestockItem(\''+item._key+'\')">✕ Hapus</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
 }
-
-function delReview(idx) {
-  if (!confirm('Hapus ulasan ini?')) return;
-  var reviews = getReviews();
-  reviews.splice(idx, 1);
-  saveReviews(reviews);
-  renderReviews();
-  showToast('Ulasan dihapus');
+function addRestockItem(){
+  if(!window.FB_READY){showToast('Firebase belum siap!',true);return;}
+  var name=document.getElementById('rs-name').value.trim();
+  var game=document.getElementById('rs-game').value;
+  var qty=parseInt(document.getElementById('rs-qty').value)||0;
+  var unit=document.getElementById('rs-unit').value.trim()||'unit';
+  if(!name){showToast('Isi nama item!',true);return;}
+  window.FB.push(window.FB.ref(window.FB.db,'restock'),{name:name,game:game,qty:qty,maxQty:qty,unit:unit,createdAt:Date.now()});
+  document.getElementById('rs-name').value='';document.getElementById('rs-qty').value='';document.getElementById('rs-unit').value='';
+  showToast('✅ Item stok ditambahkan!');
+  sendTG('📦 *STOK BARU DITAMBAH*\n📌 '+name+'\n💎 '+qty.toLocaleString('id-ID')+' '+unit);
 }
-
-function clearReviews() {
-  if (!confirm('Hapus SEMUA ulasan?')) return;
-  localStorage.removeItem('talentid_reviews');
-  renderReviews();
-  showToast('Semua ulasan dihapus');
+function addStock(key,currentQty){
+  var inp=document.getElementById('rs-add-'+key);if(!inp)return;
+  var add=parseInt(inp.value)||0;if(add<=0){showToast('Masukkan jumlah!',true);return;}
+  var newQty=currentQty+add;
+  window.FB.update(window.FB.ref(window.FB.db,'restock/'+key),{qty:newQty,maxQty:newQty});
+  inp.value='';
+  var item=(window.FB_RESTOCK||[]).find(function(x){return x._key===key;});
+  showToast('✅ Stok ditambah '+add.toLocaleString('id-ID')+'!');
+  if(item)sendTG('📦 *RESTOCK*\n📌 '+item.name+'\n➕ +'+add.toLocaleString('id-ID')+' '+( item.unit||'')+'\n📊 Total: '+newQty.toLocaleString('id-ID'));
 }
-
-// ===== RESTART =====
-function doRestart() {
-  document.getElementById('restartConf').classList.remove('show');
-  localStorage.removeItem('talentid_public_chat');
-  lastChatCount = 0;
-  showToast('✅ Website di-restart! Chat publik direset.');
-  renderChat();
+function announceRestock(name,qty,unit){
+  var msg='✅ *RESTOCK TERSEDIA!*\n\n📦 *'+name+'*\n💎 Stok: *'+qty.toLocaleString('id-ID')+' '+unit+'*\n\nSilakan order sekarang di TalentID Store! 🛒';
+  sendTG(msg);
+  // Also post to chat
+  if(window.FB_READY){window.FB.push(window.FB.ref(window.FB.db,'chat'),{sender:'ADMIN',message:'✅ RESTOCK! '+name+' tersedia '+qty.toLocaleString('id-ID')+' '+unit+'. Order sekarang! 🛒',is_admin:true,time:Date.now()});}
+  showToast('📣 Diumumkan ke Telegram & Chat!');
+}
+function delRestockItem(key){
+  if(!confirm('Hapus item ini?'))return;
+  window.FB.remove(window.FB.ref(window.FB.db,'restock/'+key));showToast('Item dihapus');
 }
 
 // ===== TELEGRAM =====
-function loadTGConfig() {
-  document.getElementById('tg-tok').value = localStorage.getItem('talentid_tg_token') || '';
-  document.getElementById('tg-cid').value = localStorage.getItem('talentid_tg_chatid') || '8248546813';
+function loadTGConfig(){
+  document.getElementById('tg-tok').value=localStorage.getItem('talentid_tg_token')||'';
+  document.getElementById('tg-cid').value=localStorage.getItem('talentid_tg_chatid')||'8648987950';
 }
-function saveTG() {
-  var tok = document.getElementById('tg-tok').value.trim();
-  var cid = document.getElementById('tg-cid').value.trim();
-  if (!tok || !cid) { showToast('Isi token dan chat ID!', true); return; }
-  localStorage.setItem('talentid_tg_token', tok);
-  localStorage.setItem('talentid_tg_chatid', cid);
+function saveTG(){
+  var tok=document.getElementById('tg-tok').value.trim(),cid=document.getElementById('tg-cid').value.trim();
+  if(!tok||!cid){showToast('Isi semua!',true);return;}
+  localStorage.setItem('talentid_tg_token',tok);localStorage.setItem('talentid_tg_chatid',cid);
   showToast('Token disimpan! ✅');
 }
-function testTG() {
-  var tok = localStorage.getItem('talentid_tg_token');
-  var cid = localStorage.getItem('talentid_tg_chatid');
-  if (!tok || !cid) { showToast('Simpan token dulu!', true); return; }
-  var st = document.getElementById('tg-status');
-  if (st) st.textContent = '⏳ Mengirim...';
-  fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({chat_id:cid, text:'✅ TalentID Store\nBot berhasil terhubung!\n📅 ' + fmtDate(new Date()), parse_mode:'Markdown'})
-  }).then(function(r){return r.json();}).then(function(d){
-    if (d.ok) { showToast('✅ Test berhasil!'); if(st) st.innerHTML='<span style="color:var(--green)">✅ Bot terhubung!</span>'; }
-    else { showToast('❌ Gagal: '+(d.description||''), true); if(st) st.innerHTML='<span style="color:var(--red)">❌ '+(d.description||'Error')+'</span>'; }
-  }).catch(function(){ showToast('❌ Tidak bisa terhubung!', true); });
+function testTG(){
+  var tok=localStorage.getItem('talentid_tg_token'),cid=localStorage.getItem('talentid_tg_chatid');
+  if(!tok||!cid){showToast('Simpan token dulu!',true);return;}
+  var st=document.getElementById('tg-status');if(st)st.textContent='⏳ Mengirim...';
+  fetch('https://api.telegram.org/bot'+tok+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cid,text:'✅ *TalentID Store*\nBot berhasil terhubung!\n📅 '+fmtDate(new Date()),parse_mode:'Markdown'})})
+  .then(function(r){return r.json();}).then(function(d){
+    if(d.ok){showToast('✅ Test berhasil!');if(st)st.innerHTML='<span style="color:var(--green)">✅ Bot terhubung!</span>';}
+    else{showToast('❌ '+(d.description||'Error'),true);if(st)st.innerHTML='<span style="color:var(--red)">❌ '+(d.description||'Error')+'</span>';}
+  }).catch(function(){showToast('❌ Gagal!',true);});
 }
-function sendTG(text) {
-  var tok = localStorage.getItem('talentid_tg_token');
-  var cid = localStorage.getItem('talentid_tg_chatid');
-  if (!tok || !cid) return;
-  fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({chat_id:cid, text:text, parse_mode:'Markdown'})
-  }).catch(function(){});
+function sendTG(text){
+  var tok=localStorage.getItem('talentid_tg_token'),cid=localStorage.getItem('talentid_tg_chatid');
+  if(!tok||!cid)return;
+  fetch('https://api.telegram.org/bot'+tok+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cid,text:text,parse_mode:'Markdown'})}).catch(function(){});
+}
+function sendOrderTG(t){
+  var tok=localStorage.getItem('talentid_tg_token'),cid=localStorage.getItem('talentid_tg_chatid');
+  if(!tok||!cid)return;
+  var il=(t.game||'').toLowerCase().includes('fire')?'ID Free Fire':'Username Roblox';
+  var date=t.date?fmtDate(new Date(t.date)):fmtDate(new Date());
+  function e(s){return String(s||'').replace(/([_*\[\]()~`>#+=|{}.!\\-])/g,'\\$1');}
+  var mk=function(num){return 'Halo TalentID Store\\! Saya mau order:\n\n🛒 *ORDER BARU — TalentID Store*\n👤 *Pembeli:* '+e(t.user)+'\n🎮 *Game:* '+e(t.game)+'\n💎 *Nominal:* '+e(t.nominal)+'\n💰 *Harga:* '+e(t.harga)+'\n🆔 *'+e(il)+':* '+e(t.id)+'\n💳 *Bayar:* '+e(t.pay)+'\n📅 *Tgl:* '+e(date)+'\n\n'+num+'\n\nMohon konfirmasi\\. Terima kasih\\!';};
+  [mk('Di nomor admin\n\\+6285185620148 Indonesia'),mk('Di nomor admin Filipina\n\\+639100228343')].forEach(function(m){
+    fetch('https://api.telegram.org/bot'+tok+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:cid,text:m,parse_mode:'MarkdownV2'})}).catch(function(){});
+  });
 }
 
-// ===== ORDER WATCHER =====
-var lastTxCount = 0;
-function watchOrders() {
-  var txs = getTx();
-  if (lastTxCount === 0) { lastTxCount = txs.length; return; }
-  if (txs.length > lastTxCount) {
-    var newOrders = txs.slice(0, txs.length - lastTxCount);
-    newOrders.forEach(function(t) {
-      var il = (t.game||'').toLowerCase().includes('fire') ? 'ID Free Fire' : 'Username Roblox';
-      var date = t.date ? fmtDate(new Date(t.date)) : fmtDate(new Date());
-      function e(s){return String(s||'').replace(/([_*\[\]()~`>#+=|{}.!\\-])/g,'\\$1');}
-      var makeMsg = function(numLine) {
-        return 'Halo TalentID Store\\! Saya mau order:\n\n' +
-          '🛒 *ORDER BARU — TalentID Store*\n' +
-          '👤 *Pembeli:* ' + e(t.user) + '\n' +
-          '🎮 *Game:* ' + e(t.game) + '\n' +
-          '💎 *Nominal:* ' + e(t.nominal) + '\n' +
-          '💰 *Harga:* ' + e(t.harga) + '\n' +
-          '🆔 *' + e(il) + ':* ' + e(t.id) + '\n' +
-          '💳 *Bayar:* ' + e(t.pay) + '\n' +
-          '📅 *Tgl:* ' + e(date) + '\n\n' +
-          numLine + '\n\nMohon konfirmasi\\. Terima kasih\\!';
-      };
-      var tok = localStorage.getItem('talentid_tg_token');
-      var cid = localStorage.getItem('talentid_tg_chatid');
-      if (tok && cid) {
-        [makeMsg('Di nomor admin\n\\+6285185620148 Indonesia'), makeMsg('Di nomor admin Filipina\n\\+639100228343')].forEach(function(msg) {
-          fetch('https://api.telegram.org/bot' + tok + '/sendMessage', {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({chat_id:cid, text:msg, parse_mode:'MarkdownV2'})
-          }).catch(function(){});
-        });
-      }
-      playNotif();
-      sendBrowserNotif(t.user||'Pembeli', t.game + ' — ' + t.harga);
-      showToast('🛒 ORDER dari ' + (t.user||'?') + ' — ' + (t.harga||''));
-      refreshDash();
-    });
-    lastTxCount = txs.length;
-  }
+// ===== NOTIF =====
+function playNotif(){
+  try{var ctx=new(window.AudioContext||window.webkitAudioContext)();[0,.2,.4].forEach(function(o){var osc=ctx.createOscillator(),g=ctx.createGain();osc.connect(g);g.connect(ctx.destination);osc.type='sine';osc.frequency.setValueAtTime(880,ctx.currentTime+o);osc.frequency.exponentialRampToValueAtTime(660,ctx.currentTime+o+.12);g.gain.setValueAtTime(.5,ctx.currentTime+o);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+o+.15);osc.start(ctx.currentTime+o);osc.stop(ctx.currentTime+o+.15);});}catch(e){}
+}
+function sendBrowserNotif(title,body){
+  if(!('Notification'in window))return;
+  if(Notification.permission==='granted'){new Notification(title,{body:body,tag:'talentid'});}
+  else if(Notification.permission!=='denied'){Notification.requestPermission();}
 }
 
 // ===== UTILS =====
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function fmtDate(d) {
-  var days=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-  var months=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-  var h=String(d.getHours()).padStart(2,'0'), m=String(d.getMinutes()).padStart(2,'0');
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtDate(d){
+  var days=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],months=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  var h=String(d.getHours()).padStart(2,'0'),m=String(d.getMinutes()).padStart(2,'0');
   return days[d.getDay()]+', '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear()+' · '+h+':'+m;
 }
-function showToast(msg, isErr) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (isErr ? ' err' : '') + ' show';
-  setTimeout(function() { t.classList.remove('show'); }, 3500);
+function getAvaColor(name){var c=['#5865f2','#e91e63','#00cfff','#00e87a','#ff8c00','#a78bfa','#ff3c3c','#ec4899'];var i=0;for(var j=0;j<name.length;j++)i+=name.charCodeAt(j);return c[i%c.length];}
+function showToast(msg,isErr){
+  var t=document.getElementById('toast');t.textContent=msg;
+  t.className='toast'+(isErr?' err':'')+' show';
+  setTimeout(function(){t.classList.remove('show');},3500);
 }
 
 // ===== INIT =====
-function initPanel() {
-  refreshDash();
-  initToggle();
-  loadTGConfig();
-  lastTxCount = getTx().length;
-  lastRvCount = getReviews().length;
-  lastChatCount = getChat().length;
-  if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission();
-
-  // Poll every 2s: new orders, new chat, new reviews
-  setInterval(function() {
-    watchOrders();
-    // Chat notif
-    var msgs = getChat();
-    if (msgs.length > lastChatCount) {
-      var isOnChat = document.getElementById('pg-chat').classList.contains('active');
-      if (!isOnChat) {
-        var newMsgs = msgs.slice(lastChatCount);
-        newMsgs.forEach(function(m) {
-          if (!m.is_admin && !m.isAdmin) {
-            chatNotifCount++;
-            document.getElementById('chat-dot').classList.add('show');
-            document.title = '(' + chatNotifCount + ') Chat Baru — TalentID Admin';
-            playNotif();
-            sendBrowserNotif(m.sender, m.message||m.text||'');
-            showToast('💬 ' + m.sender + ': ' + (m.message||m.text||'').substring(0,40));
-          }
-        });
-        lastChatCount = msgs.length;
-      } else {
-        renderChat();
-        lastChatCount = msgs.length;
-      }
-    }
-    // Review notif
-    var rvs = getReviews();
-    if (rvs.length > lastRvCount) {
-      document.getElementById('rv-dot').classList.add('show');
-      var newRvs = rvs.slice(lastRvCount);
-      newRvs.forEach(function(r) {
-        showToast('⭐ Ulasan baru dari ' + r.name + ' — ' + r.stars + ' bintang');
-        playNotif();
-      });
-      lastRvCount = rvs.length;
-      if (document.getElementById('pg-reviews').classList.contains('active')) renderReviews();
-    }
-    // Dashboard time
-    if (document.getElementById('dash-time')) document.getElementById('dash-time').textContent = fmtDate(new Date());
-  }, 2000);
+function initPanel(){
+  refreshDash();loadTGConfig();
+  if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();
+  setInterval(function(){if(document.getElementById('dash-time'))document.getElementById('dash-time').textContent=fmtDate(new Date());},30000);
 }
 </script>
 </body>
